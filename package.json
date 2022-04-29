@@ -1,0 +1,33 @@
+{
+  "name": "hello-near",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "cd contract && node ./compile.js",
+    "deploy": "npm run build && near dev-deploy",
+    "test": "npm run build && cd contract && cargo test && cd .. && jest test --runInBand",
+    "jest": "npm run build && jest test --runInBand",
+    "start": "npm run build && npm run deploy && echo The app is starting! && env-cmd -f ./neardev/dev-account.env parcel frontend/index.html --open",
+    "dev": "nodemon --watch contract -e ts --exec \"npm run start\""
+  },
+  "devDependencies": {
+    "env-cmd": "~10.1.0",
+    "jest": "~26.6.2",
+    "jest-environment-node": "~26.6.2",
+    "near-cli": "~2.1.1",
+    "nodemon": "~2.0.3",
+    "parcel-bundler": "~1.12.4",
+    "shelljs": "~0.8.4"
+  },
+  "dependencies": {
+    "near-api-js": "~0.43.1",
+    "regenerator-runtime": "~0.13.5"
+  },
+  "jest": {
+    "testEnvironment": "near-cli/test_environment",
+    "testPathIgnorePatterns": [
+      "<rootDir>/contract/",
+      "<rootDir>/node_modules/"
+    ]
+  }
+}
