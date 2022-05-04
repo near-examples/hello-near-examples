@@ -2,6 +2,7 @@
 # Developer note: near.gitignore will be renamed to .gitignore upon project creation
 # dependencies
 /node_modules
+*/target
 /.pnp
 .pnp.js
 /out
@@ -25,3 +26,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# lock files
+*Cargo.lock
+*-lock.json
