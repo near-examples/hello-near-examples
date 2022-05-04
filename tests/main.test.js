@@ -10,7 +10,8 @@ describe("Hello NEAR", function () {
     contract = await new Contract(
       user,
       nearConfig.contractName,
-      { viewMethods: ["get_greeting"], changeMethods: ["set_greeting"] });
+      { viewMethods: ["get_greeting"], changeMethods: ["set_greeting"] }
+    );
   });
 
   describe("Greeter", function () {
