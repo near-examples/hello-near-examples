@@ -13,8 +13,8 @@ test.beforeEach(async (t) => {
   // deploy contract
   const root = worker.rootAccount;
   const contract = await root.createAndDeploy(
-    root.getSubAccount("hello-near").accountId,
-    "./out/hello-near.wasm",
+    root.getSubAccount("hello_near").accountId,
+    "./out/hello_near.wasm",
     { initialBalance: NEAR.parse("30 N").toJSON() }
   );
 
