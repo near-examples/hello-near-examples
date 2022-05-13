@@ -23,13 +23,6 @@ test.beforeEach(async (t) => {
   t.context.accounts = { root, contract };
 });
 
-test.afterEach(async (t) => {
-  // Stop Sandbox server
-  await t.context.worker.tearDown().catch((error) => {
-    console.log("Failed to stop the Sandbox:", error);
-  });
-});
-
 test("returns the default greeting", async (t) => {
   const { contract } = t.context.accounts;
   const message: string = await contract.view("get_greeting", {});
@@ -41,4 +34,11 @@ test("changes the message", async (t) => {
   await root.call(contract, "set_greeting", { message: "Howdy" });
   const message: string = await contract.view("get_greeting", {});
   t.is(message, "Howdy");
+});
+
+test.afterEach(async (t) => {
+  // Stop Sandbox server
+  await t.context.worker.tearDown().catch((error) => {
+    console.log("Failed to stop the Sandbox:", error);
+  });
 });
