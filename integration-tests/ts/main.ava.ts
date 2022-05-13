@@ -7,10 +7,10 @@ const test = anyTest as TestFn<{
 }>;
 
 test.beforeEach(async (t) => {
-  // Init the worker and start a Sandbox server
+  // Start the Sandbox
   const worker = await Worker.init();
 
-  // deploy contract
+  // Deploy contract
   const root = worker.rootAccount;
   const contract = await root.createAndDeploy(
     root.getSubAccount("hello_near").accountId,
@@ -31,7 +31,7 @@ test.afterEach(async (t) => {
 });
 
 test("returns the default greeting", async (t) => {
-  const { root, contract } = t.context.accounts;
+  const { contract } = t.context.accounts;
   const message: string = await contract.view("get_greeting", {});
   t.is(message, "Hello");
 });
