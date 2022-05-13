@@ -1,6 +1,6 @@
-use serde_json::json;
 use near_units::parse_near;
-use workspaces::prelude::*; 
+use serde_json::json;
+use workspaces::prelude::*;
 use workspaces::{network::Sandbox, Account, Contract, Worker};
 
 const WASM_FILEPATH: &str = "../../out/hello_near.wasm";
@@ -14,17 +14,17 @@ async fn main() -> anyhow::Result<()> {
     // create accounts
     let owner = worker.root_account();
     let alice = owner
-    .create_subaccount(&worker, "alice")
-    .initial_balance(parse_near!("30 N"))
-    .transact()
-    .await?
-    .into_result()?;
+        .create_subaccount(&worker, "alice")
+        .initial_balance(parse_near!("30 N"))
+        .transact()
+        .await?
+        .into_result()?;
 
-    // begin tests  
+    // begin tests
     test_default_message(&alice, &contract, &worker).await?;
     test_changes_message(&alice, &contract, &worker).await?;
     Ok(())
-}   
+}
 
 async fn test_default_message(
     user: &Account,
@@ -38,7 +38,6 @@ async fn test_default_message(
         .await?
         .json()?;
 
-
     assert_eq!(message, "Hello".to_string());
     println!("      Passed ✅ gets default message");
     Ok(())
@@ -49,7 +48,6 @@ async fn test_changes_message(
     contract: &Contract,
     worker: &Worker<Sandbox>,
 ) -> anyhow::Result<()> {
-
     user.call(&worker, contract.id(), "set_greeting")
         .args_json(json!({"message": "Howdy"}))?
         .transact()
