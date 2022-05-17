@@ -4,7 +4,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "build:rustup": "cd contract && rustup target add wasm32-unknown-unknown && cargo build --all --target wasm32-unknown-unknown --release",
-    "build:cpwasm": "mkdir -p out && rm -f ./out/main.wasm && cp ./contract/target/wasm32-unknown-unknown/release/hello_near.wasm ./out/hello_near.wasm",
+    "build:cpwasm": "mkdir -p out && rm -f ./out/main.wasm && cp ./contract/target/wasm32-unknown-unknown/release/hello_near.wasm ./out/main.wasm",
     "build": "npm run build:rustup && npm run build:cpwasm",
     "deploy": "npm run build && near dev-deploy",
     "test:integration:ts": "ava --verbose",
