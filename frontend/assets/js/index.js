@@ -29,6 +29,9 @@ document.querySelector('form').onsubmit = async (event) => {
   await fetchGreeting()
 }
 
+document.querySelector('#sign-in-button').onclick = login
+document.querySelector('#sign-out-button').onclick = logout
+
 async function fetchGreeting() {
   // Get greeting from the contract
   const currentGreeting = await getGreeting()
@@ -39,10 +42,6 @@ async function fetchGreeting() {
     el.value = currentGreeting
   })
 }
-
-// Log in and log out users using NEAR Wallet
-document.querySelector('#sign-in-button').onclick = login
-document.querySelector('#sign-out-button').onclick = logout
 
 // `nearInitPromise` gets called on page load
 window.nearInitPromise = initContract()
@@ -55,6 +54,7 @@ function flow(){
   }else{
     signedOutFlow()
   }
+  fetchGreeting()
 }
 
 // Display the signed-out-flow container
@@ -62,13 +62,11 @@ function signedOutFlow() {
   document.querySelector('#signed-out-flow').style.display = 'block'
 }
 
-// Displaying the signed-in-flow container and fill in account-specific data
+// Displaying the signed in flow container and fill in account-specific data
 function signedInFlow() {
   document.querySelector('#signed-in-flow').style.display = 'block'
 
   document.querySelectorAll('[data-behavior=account-id]').forEach(el => {
     el.innerText = window.accountId
   })
-
-  fetchGreeting()
 }
