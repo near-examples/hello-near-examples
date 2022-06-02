@@ -5,17 +5,16 @@ const nearConfig = getConfig(process.env.NODE_ENV || 'testnet')
 
 // Initialize contract & set global variables
 export async function initContract() {
+  // Set a connection using keys from this web-app local storage.
   const near = await connect(Object.assign({ deps: { keyStore: new keyStores.BrowserLocalStorageKeyStore() } }, nearConfig))
 
+  // Initialize a Wallet Object (to know if user is signedIn)
   window.walletConnection = new WalletConnection(near)
 
-  // Getting the Account ID. If still unauthorized, it's just empty string
-  window.accountId = window.walletConnection.getAccountId()
-
-  // Initializing our contract APIs by contract name and configuration
+  // Initialize a Contract Object (to interact with the contract)
   window.contract = await new Contract(
-    window.walletConnection.account(),
-    nearConfig.contractName,
+    window.walletConnection.account(), // user's account
+    nearConfig.contractName, // contract's account
     {
       viewMethods: ['get_greeting'],
       changeMethods: ['set_greeting'],

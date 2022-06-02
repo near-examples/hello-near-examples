@@ -67,6 +67,6 @@ function signedInFlow() {
   document.querySelector('#signed-in-flow').style.display = 'block'
 
   document.querySelectorAll('[data-behavior=account-id]').forEach(el => {
-    el.innerText = window.accountId
+    el.innerText = window.walletConnection.getAccountId()
   })
 }
