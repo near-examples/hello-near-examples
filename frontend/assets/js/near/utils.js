@@ -1,12 +1,12 @@
-import { connect, Contract, keyStores, WalletConnection } from 'near-api-js'
+import { connect, Contract, WalletConnection } from 'near-api-js'
 import getConfig from './config'
 
 const nearConfig = getConfig(process.env.NODE_ENV || 'testnet')
 
 // Initialize contract & set global variables
 export async function initContract() {
-  // Set a connection using keys from this web-app local storage.
-  const near = await connect(Object.assign({ deps: { keyStore: new keyStores.BrowserLocalStorageKeyStore() } }, nearConfig))
+  // Set a connection to the NEAR network
+  const near = await connect(nearConfig)
 
   // Initialize a Wallet Object (to know if user is signedIn)
   window.walletConnection = new WalletConnection(near)

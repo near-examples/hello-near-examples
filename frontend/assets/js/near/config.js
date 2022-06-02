@@ -1,4 +1,6 @@
-const CONTRACT_NAME = process.env.CONTRACT_NAME || 'write-your-account-here'
+import { keyStores } from 'near-api-js'
+
+const CONTRACT_NAME = process.env.CONTRACT_NAME || 'your-contract-account-here'
 
 function getConfig(env) {
   switch (env) {
@@ -11,6 +13,7 @@ function getConfig(env) {
       walletUrl: 'https://wallet.near.org',
       helperUrl: 'https://helper.mainnet.near.org',
       explorerUrl: 'https://explorer.mainnet.near.org',
+      deps: { keyStore: new keyStores.BrowserLocalStorageKeyStore() }
     }
   case 'development':
   case 'testnet':
@@ -21,6 +24,7 @@ function getConfig(env) {
       walletUrl: 'https://wallet.testnet.near.org',
       helperUrl: 'https://helper.testnet.near.org',
       explorerUrl: 'https://explorer.testnet.near.org',
+      deps: { keyStore: new keyStores.BrowserLocalStorageKeyStore() }
     }
   default:
     throw Error(`Unconfigured environment '${env}'. Can be configured in src/config.js.`)
