@@ -1,27 +1,25 @@
 import { connect, Contract, keyStores, WalletConnection } from 'near-api-js'
 import getConfig from './config'
 
-const nearConfig = getConfig(process.env.NODE_ENV || 'development')
+const nearConfig = getConfig(process.env.NODE_ENV || 'testnet')
 
 // Initialize contract & set global variables
 export async function initContract() {
-  // Initialize connection to the NEAR testnet
   const near = await connect(Object.assign({ deps: { keyStore: new keyStores.BrowserLocalStorageKeyStore() } }, nearConfig))
 
-  // Initializing Wallet based Account. It can work with NEAR testnet wallet that
-  // is hosted at https://wallet.testnet.near.org
   window.walletConnection = new WalletConnection(near)
 
   // Getting the Account ID. If still unauthorized, it's just empty string
   window.accountId = window.walletConnection.getAccountId()
 
   // Initializing our contract APIs by contract name and configuration
-  window.contract = await new Contract(window.walletConnection.account(), nearConfig.contractName, {
-    // View methods are read only. They don't modify the state, but usually return some value.
-    viewMethods: ['get_greeting'],
-    // Change methods can modify the state. But you don't receive the returned value when called.
-    changeMethods: ['set_greeting'],
-  })
+  window.contract = await new Contract(
+    window.walletConnection.account(),
+    nearConfig.contractName,
+    {
+      viewMethods: ['get_greeting'],
+      changeMethods: ['set_greeting'],
+    })
 }
 
 export function logout() {
@@ -38,14 +36,14 @@ export function login() {
   window.walletConnection.requestSignIn(nearConfig.contractName)
 }
 
-export async function setGreeting(message){
+export async function setGreeting(message) {
   let response = await window.contract.set_greeting({
-    args:{message: message}
+    args: { message: message }
   })
   return response
 }
 
-export async function getGreeting(){
+export async function getGreeting() {
   let greeting = await window.contract.get_greeting()
   return greeting;
 }
