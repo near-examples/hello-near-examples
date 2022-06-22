@@ -30,3 +30,5 @@ yarn-error.log*
 # lock files
 *Cargo.lock
 *-lock.json
+
+.cache
