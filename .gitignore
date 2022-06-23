@@ -18,6 +18,7 @@
 
 # misc
 .DS_Store
+.idea
 .env.local
 .env.development.local
 .env.test.local
@@ -30,3 +31,7 @@ yarn-error.log*
 # lock files
 *Cargo.lock
 *-lock.json
+
+.cache
+dist
+.parcel-cache
