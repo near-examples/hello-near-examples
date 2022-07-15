@@ -40,6 +40,7 @@ h1 {
   background-repeat: no-repeat;
   background-size: auto 1.5em;
   margin-top: 0;
+  margin-bottom: 1em;
   padding: 3.5em 0 0;
   text-align: center;
   font-size: 1.5em;
@@ -81,6 +82,7 @@ ul.information  {
   font-size: 1em;
   border: 2px solid var(--light-gray);
   padding: 0.5em;
+  margin: 2em auto;
 }
 .change > div {
   display: flex;
