@@ -1,0 +1,21 @@
+{
+  "name": "template",
+  "version": "1.0.0",
+  "description": "Contract template with near-sdk-js",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "near-sdk build",
+    "test": "ava"
+  },
+  "author": "Near Inc <hello@nearprotocol.com>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "near-sdk-js": "^0.4.0-2",
+    "lodash-es": "^4.17.21"
+  },
+  "devDependencies": {
+    "ava": "^4.2.0",
+    "near-workspaces": "^2.0.0"
+  }
+}
