@@ -1,34 +1,32 @@
+/*
+ * Example smart contract written in JavaScript
+ *
+ */
+
 import { NearContract, NearBindgen, near, call, view } from 'near-sdk-js'
-import { isUndefined } from 'lodash-es'
 
+// Define the default message
+const DEFAULT_MESSAGE = "Hello";
+
+// Define the contract structure
 @NearBindgen
-class Counter extends NearContract {
-    constructor({ initial = 0 }) {
+class Contract extends NearContract {
+    // Define the constructor, which sets the message equal to the default message.
+    constructor() {
         super()
-        this.count = initial
+        this.message = DEFAULT_MESSAGE;
     }
 
     @call
-    increase({ n = 1 }) {
-        this.count += n
-        near.log(`Counter increased to ${this.count}`)
+    // Public method - accepts a greeting, such as "howdy", and records it
+    set_greeting({ message }) {
+        near.log(`Saving greeting ${message}`)
+        this.message = message;
     }
-
-    @call
-    decrease({ n }) {
-        // you can use default argument `n=1` too
-        // this is to illustrate a npm dependency: lodash can be used
-        if (isUndefined(n)) {
-            this.count -= 1
-        } else {
-            this.count -= n
-        }
-        near.log(`Counter decreased to ${this.count}`)
-    }
-
+    
     @view
-    getCount() {
-        return this.count
+    // Public method - returns the greeting saved, defaulting to DEFAULT_MESSAGE
+    get_greeting() {
+        return this.message;
     }
 }
-
