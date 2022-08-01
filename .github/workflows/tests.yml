@@ -4,7 +4,7 @@ jobs:
   workflows:
     strategy:
       matrix:
-        platform: [ubuntu-latest, macos-latest]
+        platform: [ubuntu-latest] # mac-os in development
     runs-on: ${{ matrix.platform }}
     steps:
       - uses: actions/checkout@v2
