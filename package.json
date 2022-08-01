@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "near-sdk build src/index.ts",
-    "test": "ava"
+    "test": "ava --verbose"
   },
   "author": "Near Inc <hello@nearprotocol.com>",
   "license": "Apache-2.0",
@@ -14,5 +14,7 @@
     "lodash-es": "^4.17.21"
   },
   "devDependencies": {
+    "ava": "^4.3.1",
+    "near-workspaces": "^3.1.0"
   }
 }
