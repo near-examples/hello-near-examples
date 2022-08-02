@@ -4,17 +4,18 @@
   "description": "Contract template with near-sdk-js",
   "type": "module",
   "scripts": {
-    "build": "near-sdk build src/index.ts",
+    "build": "near-sdk-js build src/index.ts",
     "test": "ava --verbose"
   },
   "author": "Near Inc <hello@nearprotocol.com>",
   "license": "Apache-2.0",
   "dependencies": {
-    "near-sdk-js": "^0.4.0-2",
+    "near-sdk-js": "^0.4.0-3",
     "lodash-es": "^4.17.21"
   },
   "devDependencies": {
     "ava": "^4.3.1",
-    "near-workspaces": "^3.1.0"
+    "near-workspaces": "^3.1.0",
+    "typescript": "^4.7.4"
   }
 }

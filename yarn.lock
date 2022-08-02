@@ -1604,10 +1604,10 @@ near-sandbox@^0.0.12:
     got "^11.8.2"
     tar "^6.1.0"
 
-near-sdk-js@^0.4.0-2:
-  version "0.4.0-2"
-  resolved "https://registry.npmjs.org/near-sdk-js/-/near-sdk-js-0.4.0-2.tgz"
-  integrity sha512-/hJeMvwU2A/09qlFGTzm+x5WSDxQpABtz4LsQwafsWLjUel4dIFHFiIL0JVTVGI/FkNNA646OvNx9uPWr8iSOQ==
+near-sdk-js@^0.4.0-3:
+  version "0.4.0-3"
+  resolved "https://registry.yarnpkg.com/near-sdk-js/-/near-sdk-js-0.4.0-3.tgz#ca6996a3b1ceedd5c126a670add7f8241b20cbd2"
+  integrity sha512-57lmb1trYhJ9171EWec/2GZa/0/7ESbgc5sx3YKS9SPY/5I9+h1BCwBNvKjdH6wMrhSvMfK3/x7Ly/p9SAfpxA==
   dependencies:
     "@babel/core" "^7.17.5"
     "@babel/plugin-proposal-decorators" "^7.17.2"
@@ -1617,6 +1617,7 @@ near-sdk-js@^0.4.0-2:
     "@rollup/plugin-node-resolve" "^13.1.1"
     rollup "^2.61.1"
     rollup-plugin-sourcemaps "^0.6.3"
+    superserial "^0.3.0"
     yargs "^17.5.1"
 
 near-units@^0.1.9:
@@ -2021,6 +2022,11 @@ strip-ansi@^7.0.1:
   dependencies:
     ansi-regex "^6.0.1"
 
+superserial@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/superserial/-/superserial-0.3.0.tgz#9bed3a49461cf714e789ccad01722ee2242126e6"
+  integrity sha512-whx28H+uq/0eIoCkLVpRRhpBqjHTfdzugiNv0mIJicBNdm9Z5qKcs9yDx0hvOtL7+JiYKYamxPUO0EWGxAAZBw==
+
 supertap@^3.0.1:
   version "3.0.1"
   resolved "https://registry.npmjs.org/supertap/-/supertap-3.0.1.tgz"
@@ -2101,6 +2107,11 @@ type-fest@^0.13.1:
   version "0.13.1"
   resolved "https://registry.npmjs.org/type-fest/-/type-fest-0.13.1.tgz"
   integrity sha512-34R7HTnG0XIJcBSn5XhDd7nNFPRcXYRZrBB2O2jdKqYODldSzBAqzsWoZYYvduky73toYS/ESqxPvkDf/F0XMg==
+
+typescript@^4.7.4:
+  version "4.7.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.4.tgz#1a88596d1cf47d59507a1bcdfb5b9dfe4d488235"
+  integrity sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==
 
 u3@^0.1.1:
   version "0.1.1"
