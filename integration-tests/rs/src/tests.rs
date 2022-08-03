@@ -20,12 +20,10 @@ async fn main() -> anyhow::Result<()> {
         .await?
         .into_result()?;
 
-    owner
-    .call(&worker, contract.id(), "init")
+    owner.call(&worker, contract.id(), "init")
     .args_json(json!({}))?
     .transact()
-    .await?
-    .json()?;
+    .await?;
 
     // begin tests
     test_default_message(&alice, &contract, &worker).await?;
