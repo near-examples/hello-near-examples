@@ -8,24 +8,23 @@
     "start": "npm run deploy && echo The app is starting! && env-cmd -f ./neardev/dev-account.env parcel frontend/index.html --open",
     "dev": "nodemon --watch contract -e ts --exec \"npm run start\"",
     "test": "npm run build && npm run test:unit && npm run test:integration",
-      "test:unit": "echo js has no unit tests",
-      "test:integration": "npm run test:integration:ts && npm run test:integration:rs",
-        "test:integration:ts": "ava --verbose",
-        "test:integration:rs": "cd integration-tests/rs && cargo run --example integration-tests"
+    "test:unit": "echo js has no unit tests",
+    "test:integration": "npm run test:integration:ts && npm run test:integration:rs",
+    "test:integration:ts": "ava --verbose",
+    "test:integration:rs": "cd integration-tests/rs && cargo run --example integration-tests"
   },
   "devDependencies": {
+    "ava": "^4.2.0",
     "env-cmd": "^10.1.0",
     "near-cli": "^3.2.0",
-    "nodemon": "~2.0.15",
-    "parcel-bundler": "~1.12.5",
-    "ava": "^4.2.0",
     "near-workspaces": "^3.1.0",
-    "typescript": "^4.7.4",
-    "ts-node": "^10.7.0"
+    "nodemon": "~2.0.15",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.7.4"
   },
   "dependencies": {
-    "near-sdk-js": "^0.4.0-3",
     "near-api-js": "~0.43.1",
+    "parcel": "^2.7.0",
     "regenerator-runtime": "~0.13.5"
   }
 }
