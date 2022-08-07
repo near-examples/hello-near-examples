@@ -31,4 +31,6 @@ class Contract extends NearContract {
     get_greeting(): string {
         return this.message;
     }
+
+    default(){return new Contract()}
 }

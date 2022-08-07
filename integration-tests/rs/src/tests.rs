@@ -1,4 +1,3 @@
-use near_units::parse_near;
 use serde_json::json;
 use workspaces::prelude::*;
 use workspaces::{network::Sandbox, Account, Contract, Worker};
@@ -12,15 +11,9 @@ async fn main() -> anyhow::Result<()> {
     let contract = worker.dev_deploy(&wasm).await?;
 
     // create accounts
-    let owner = worker.root_account();
-    let alice = owner
-        .create_subaccount(&worker, "alice")
-        .initial_balance(parse_near!("30 N"))
-        .transact()
-        .await?
-        .into_result()?;
+    let alice = worker.dev_create_account().await?;
 
-    owner.call(&worker, contract.id(), "init")
+    contract.call(&worker, "init")
     .args_json(json!({}))?
     .transact()
     .await?;
