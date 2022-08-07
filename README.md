@@ -109,3 +109,21 @@ npm run start
 ```
 
 From there you should be able to modify the greeting.
+
+## Run Tests
+
+This example repo comes with integration tests written in rust and assembly type script.
+
+To run tests run the following in your terminal:
+
+```bash
+yarn test
+```
+
+or
+
+```bash
+npm run test
+```
+
+Integration tests are generally written in javascript. They automatically deploy your contract and execute methods on it. In this way, integration tests simulate interactions from users in a realistic scenario. You will find the integration tests for hello-near in integration-tests/.
