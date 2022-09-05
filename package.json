@@ -1,5 +1,5 @@
 {
-  "name": "./releases/hello_near-js",
+  "name": "hello-near-js",
   "version": "1.0.0",
   "license": "(MIT AND Apache-2.0)",
   "scripts": {
