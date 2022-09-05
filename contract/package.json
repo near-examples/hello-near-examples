@@ -1,15 +1,16 @@
 {
-  "name": "hello-near-contract",
+  "name": "contract",
   "version": "1.0.0",
-  "description": "Hello NEAR contract in Javascript",
+  "license": "(MIT AND Apache-2.0)",
   "type": "module",
   "scripts": {
-    "build": "near-sdk-js build src/index.ts build/hello_near.wasm"
+    "build": "./build.sh",
+    "deploy": "./deploy.sh",
+    "test": "echo no unit testing"
   },
-  "author": "Near Inc <hello@nearprotocol.com>",
-  "license": "Apache-2.0",
   "dependencies": {
-    "near-sdk-js": "^0.4.0-5"
+    "near-cli": "^3.4.0",
+    "near-sdk-js": "0.5.0-0"
   },
   "devDependencies": {
     "typescript": "^4.7.4"

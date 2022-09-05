@@ -1,129 +1,53 @@
-# Hello Near JS Example
+# Hello Near 👋 
+[![](https://img.shields.io/badge/⋈%20Examples-Basics-green)](https://docs.near.org/tutorials/welcome)
+[![](https://img.shields.io/badge/Gitpod-Ready-orange)](https://gitpod.io/#https://github.com/near-examples/hello-near-js})
+[![](https://img.shields.io/badge/Contract-js-yellow)](https://docs.near.org/develop/contracts/anatomy)
+[![](https://img.shields.io/badge/Frontend-JS-yellow)](https://docs.near.org/develop/integrate/frontend)
+[![](https://img.shields.io/badge/Testing-passing-green)](https://docs.near.org/develop/integrate/frontend)
 
-## Overview
 
-This simple example will demonstrate how to integrate a smart contract into a decentralized application, and how to store and retrieve information to and from the NEAR blockchain with `call` and `view` methods.
+Hello NEAR! is a friendly decentralized App that stores a greeting message. It is one of the simplest smart contracts you can create in NEAR, and the perfect gateway to introduce yourself in the world of smart contracts.
 
-## Installation & Setup
+![](https://docs.near.org/assets/images/hello-near-banner-af016d03e81a65653c9230b95a05fe4a.png)
 
-To clone run:
+
+# What This Example Shows
+
+1. How to store and retrieve information in the NEAR network.
+2. How to integrate a smart contract in a web frontend.
+
+<br />
+
+# Quickstart
+
+Clone this repository locally or [**open it in gitpod**](https://gitpod.io/#/github.com/near-examples/hello_near-js). Then follow these steps:
+
+### 1. Install Dependencies
+```bash
+npm install
+```
+
+### 2. Test the Contract
+Deploy your contract in a sandbox and simulate interactions from users.
 
 ```bash
-git clone https://github.com/near-examples/hello-near-js.git
+npm test
 ```
 
-enter the folder with:
-
+### 3. Deploy the Contract
+Build the contract and deploy it in a testnet account
 ```bash
-cd hello-near-js
+npm run deploy
 ```
 
-To download dependencies run:
-
+### 4. Start the Frontend
+Start the web application to interact with your smart contract 
 ```bash
-yarn
+npm start
 ```
 
-or
+---
 
-```bash
-npm i
-```
-
-## Building Your Smart Contract
-
-The Smart Contract consists of two methods available for the user to call.
-
-```javascript
-    @call
-    // Public method - accepts a greeting, such as "howdy", and records it
-    set_greeting({ message }: { message: string }) {
-        near.log(`Saving greeting ${message}`)
-        this.message = message;
-    }
-
-    @view
-    // Public method - returns the greeting saved, defaulting to DEFAULT_MESSAGE
-    get_greeting(): string {
-        return this.message;
-    }
-
-```
-
-A `call` method stores or modifies information that exists in state on the NEAR blockchain. Call methods do incur a gas fee. `Call` methods return no values
-
-A `view` method retrieves information stored on the blockchain. No fee is charged for a view method. View methods always return a value.
-
-`NearBindgen` is a decorator that exposes the state and methods to the user.
-
-To build your smart contract run
-
-```bash
-yarn build
-
-```
-
-or
-
-```bash
-npm run build
-```
-
-This build script will build and deploy your smart contract onto a dev account. Check the terminal logs t ofind the name of the dev account it was deployed to.
-
-example:
-
-```
-dev-1659899566943-21539992274727
-```
-
-It will also initialize your smart contract for you.
-
-## Calling methods from terminal
-
-This will store the string `"hi user"` onto the NEAR blockchain using the change method defined earlier
-
-```bash
-near call <dev account> set_greeting '{"message":"hi user"}' --accountId <your-account-name.testnet>
-```
-
-This will return and display your stored message
-
-```bash
-near view <dev account> get_greeting '{}' --accountId <your-account.testnet>
-
-```
-
-## Running Frontend
-
-To spin up the frontend run
-
-```bash
-yarn start
-```
-
-or
-
-```bash
-npm run start
-```
-
-From there you should be able to modify the greeting.
-
-## Run Tests
-
-This example repo comes with integration tests written in rust and assembly type script.
-
-To run tests run the following in your terminal:
-
-```bash
-yarn test
-```
-
-or
-
-```bash
-npm run test
-```
-
-Integration tests are generally written in javascript. They automatically deploy your contract and execute methods on it. In this way, integration tests simulate interactions from users in a realistic scenario. You will find the integration tests for hello-near in integration-tests/.
+# Learn More
+1. Learn more about the contract through its [README](./contract/README.md).
+2. Check [**our documentation**](https://docs.near.org/develop/welcome).
