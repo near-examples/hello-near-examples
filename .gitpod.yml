@@ -1,6 +1,6 @@
 tasks:
   - init: npm start
-    command: npm run deploy && npm run start
+    command: npm i && npm run deploy && npm run start
 ports:
   - port: 1234
     onOpen: open-browser
