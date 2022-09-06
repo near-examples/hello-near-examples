@@ -1,93 +1,53 @@
-Hello NEAR in Rust
-==================
-
-Quick Start
-===========
-
-To run this project locally:
-
-1. Prerequisites: Make sure you've installed [Node.js] ≥ 12
-2. Install dependencies: `npm install`
-3. Run the local development server: `npm run dev` (see `package.json` for a
-   full list of `scripts` you can run with `npm`)
-
-Now you'll have a local development environment backed by the NEAR TestNet!
-
-Go ahead and play with the app and the code. As you make code changes, the app will automatically reload.
+# Hello Near 👋 
+[![](https://img.shields.io/badge/⋈%20Examples-Basics-green)](https://docs.near.org/tutorials/welcome)
+[![](https://img.shields.io/badge/Gitpod-Ready-orange)](https://gitpod.io/#/https://github.com/near-examples/hello-near-rust)
+[![](https://img.shields.io/badge/Contract-rust-red)](https://docs.near.org/develop/contracts/anatomy)
+[![](https://img.shields.io/badge/Frontend-JS-yellow)](https://docs.near.org/develop/integrate/frontend)
+[![](https://img.shields.io/badge/Testing-passing-green)](https://docs.near.org/develop/integrate/frontend)
 
 
-Exploring The Code
-==================
+Hello NEAR! is a friendly decentralized App that stores a greeting message. It is one of the simplest smart contracts you can create in NEAR, and the perfect gateway to introduce yourself in the world of smart contracts.
 
-1. The smart-contract code lives in the `/contract` folder. See the README there for
-   more info. In blockchain apps the smart contract is the "backend" of your app.
-2. The frontend code lives in the `/frontend` folder. `/frontend/index.html` is a great
-   place to start exploring. Note that it loads in `/frontend/index.js`,
-   this is your entrypoint to learn how the frontend connects to the NEAR blockchain.
-3. Tests: there are different kinds of tests for the frontend and the smart
-   contract. See `contract/README` for info about how it's tested. The frontend
-   code gets tested with [jest]. You can run both of these at once with `npm
-   run test`.
+![](https://docs.near.org/assets/images/hello-near-banner-af016d03e81a65653c9230b95a05fe4a.png)
 
 
-Deploy
-======
+# What This Example Shows
 
-Every smart contract in NEAR has its [own associated account][NEAR accounts]. When you run `npm run dev`, your smart contract gets deployed to the live NEAR TestNet with a throwaway account. When you're ready to make it permanent, here's how.
+1. How to store and retrieve information in the NEAR network.
+2. How to integrate a smart contract in a web frontend.
 
+<br />
 
-Step 0: Install near-cli (optional)
--------------------------------------
+# Quickstart
 
-[near-cli] is a command line interface (CLI) for interacting with the NEAR blockchain. It was installed to the local `node_modules` folder when you ran `npm install`, but for best ergonomics you may want to install it globally:
+Clone this repository locally or [**open it in gitpod**](https://gitpod.io/#/https://github.com/near-examples/hello-near-rust). Then follow these steps:
 
-    npm install --global near-cli
+### 1. Install Dependencies
+```bash
+npm install
+```
 
-Or, if you'd rather use the locally-installed version, you can prefix all `near` commands with `npx`
+### 2. Test the Contract
+Deploy your contract in a sandbox and simulate interactions from users.
 
-Ensure that it's installed with `near --version` (or `npx near --version`)
+```bash
+npm test
+```
 
+### 3. Deploy the Contract
+Build the contract and deploy it in a testnet account
+```bash
+npm run deploy
+```
 
-Step 1: Create an account for the contract
-------------------------------------------
+### 4. Start the Frontend
+Start the web application to interact with your smart contract 
+```bash
+npm start
+```
 
-Each account on NEAR can have at most one contract deployed to it. If you've already created an account such as `your-name.testnet`, you can deploy your contract to `near-blank-project.your-name.testnet`. Assuming you've already created an account on [NEAR Wallet], here's how to create `near-blank-project.your-name.testnet`:
+---
 
-1. Authorize NEAR CLI, following the commands it gives you:
-
-       near login
-
-2. Create a subaccount (replace `YOUR-NAME` below with your actual account name):
-
-       near create-account near-blank-project.YOUR-NAME.testnet --masterAccount YOUR-NAME.testnet
-
-
-Step 2: set contract name in code
----------------------------------
-
-Modify the line in `frontend/near-config.js` that sets the account name of the contract. Set it to the account id you used above.
-
-    const CONTRACT_NAME = process.env.CONTRACT_NAME || 'near-blank-project.YOUR-NAME.testnet'
-
-
-Step 3: deploy!
----------------
-
-This command will build and deploy the smart contract to NEAR Testnet:
-
-    npm run deploy
-
-
-Troubleshooting
-===============
-
-On Windows, if you're seeing an error containing `EPERM` it may be related to spaces in your path. Please see [this issue](https://github.com/zkat/npx/issues/209) for more details.
-
-
-[create-near-app]: https://github.com/near/create-near-app
-[Node.js]: https://nodejs.org/en/download/package-manager/
-[jest]: https://jestjs.io/
-[NEAR accounts]: https://docs.near.org/concepts/basics/account
-[NEAR Wallet]: https://wallet.testnet.near.org/
-[near-cli]: https://github.com/near/near-cli
-[gh-pages]: https://github.com/tschaub/gh-pages
+# Learn More
+1. Learn more about the contract through its [README](./contract/README.md).
+2. Check [**our documentation**](https://docs.near.org/develop/welcome).

@@ -3,17 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="assets/favicon.ico" />
-  <link rel="apple-touch-icon" href="assets/favicon.ico" />
+  <link rel="icon" href="assets/favicon.ico"/>
+  <link rel="apple-touch-icon" href="assets/favicon.ico"/>
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"> -->
   <title>Welcome to NEAR</title>
   <link rel="stylesheet" href="assets/global.css">
 </head>
 <body>
   <main id="signed-out-flow" style="display: none">
     <h1>
-      <span class="greeting" data-behavior="greeting"></span>! 
-      Welcome to NEAR!
+      The contract says: <span class="greeting" data-behavior="greeting"></span>
     </h1>
+    <h3>
+      Welcome to NEAR!
+    </h3>
     <p>
       Your contract is storing a greeting message in the NEAR blockchain. To
       change it you need to sign in using the NEAR Wallet. It is very simple,
@@ -27,6 +30,7 @@
     <p style="text-align: center; margin-top: 2.5em">
       <button id="sign-in-button">Sign in with NEAR Wallet</button>
     </p>
+
   </main>
 
   <div id="signed-in-flow" style="display: none">
@@ -35,17 +39,20 @@
     </button>
     <main>
       <h1>
-        <span class="greeting" data-behavior="greeting"></span>! Welcome to NEAR!
+        The contract says: <span class="greeting" data-behavior="greeting"></span>
       </h1>
       <form class="change">
         <label for="greeting">Change greeting:</label>
         <div>
           <input
-              autocomplete="off"
-              id="greeting"
-              data-behavior="greeting"
-            />
-          <button>Save</button>
+                  autocomplete="off"
+                  id="greeting"
+                  data-behavior="greeting"
+          />
+          <button>
+            <span>Save</span>
+            <div class="loader"></div>
+          </button>
         </div>
       </form>
       <p>
@@ -63,7 +70,7 @@
           <a target="_blank" href="https://docs.near.org/docs/develop/contracts/overview">smart contract</a>.
         </li>
         <li>
-          When you run <code>yarn dev</code>, the code in
+          When you run <code>npm run dev</code>, the code in
           <code>assembly/index.ts</code> gets deployed to the NEAR testnet. You
           can see how this happens by looking in <code>package.json</code> at the
           <code>scripts</code> section to find the <code>dev</code> command.

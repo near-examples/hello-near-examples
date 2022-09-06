@@ -1,24 +1,16 @@
 name: Tests
-on:
-  repository_dispatch:
-    types: [tests-report]
-  push:
+on: push
 jobs:
-  tests:
+  workflows:
     strategy:
       matrix:
         platform: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.platform }}
     steps:
-      - name: Checkout branch
-        uses: actions/checkout@v2
-      - name: Install Node
-        uses: actions/setup-node@v2
-      - name: Install Rust
-        uses: actions-rs/toolchain@v1
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
         with:
-          toolchain: stable
-          target: wasm32-unknown-unknown
+          node-version: "16"
       - name: Install modules
         run: yarn
       - name: Run tests
