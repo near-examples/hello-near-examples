@@ -1,6 +1,10 @@
+image:
+  file: .gitpod.Dockerfile
+
 tasks:
-  - init: npm start
+  - init: echo "welcome"
     command: npm i && npm run deploy && npm run start
+
 ports:
   - port: 1234
     onOpen: open-browser
