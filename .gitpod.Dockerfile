@@ -1,3 +1,3 @@
 FROM gitpod/workspace-full
 
-RUN sudo apt install xdg-utils
+RUN apt install xdg-utils
