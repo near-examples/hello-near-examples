@@ -21,21 +21,22 @@ const NO_DEPOSIT = '0';
 export class Wallet {
   walletSelector;
   wallet;
-  accountId;
+  network;
   createAccessKeyFor;
 
-  constructor({ createAccessKeyFor = undefined }) {
+  constructor({ createAccessKeyFor = undefined, network = 'testnet' }) {
     // Login to a wallet passing a contractId will create a local
     // key, so the user skips signing non-payable transactions.
     // Omitting the accountId will result in the user being
     // asked to sign all transactions.
     this.createAccessKeyFor = createAccessKeyFor
+    this.network = 'testnet'
   }
 
   // To be called when the website loads
   async startUp() {
     this.walletSelector = await setupWalletSelector({
-      network: 'testnet',
+      network: this.network,
       modules: [setupMyNearWallet({ iconUrl: MyNearIconUrl }),
       setupLedger({ iconUrl: LedgerIconUrl })],
     });
