@@ -1,28 +1,31 @@
 import 'regenerator-runtime/runtime';
-import { Contract } from './near-interface';
 import { Wallet } from './near-wallet';
+import { HelloNEAR } from './near-interface';
 
-// create the Wallet and the Contract
-const wallet = new Wallet({contractId: process.env.CONTRACT_NAME, createAccessKey: true});
-const contract = new Contract({wallet: wallet})
+// When creating the wallet you can choose to create an access key, so the user
+// can skip signing non-payable methods when interacting with the contract
+const wallet = new Wallet({ createAccessKeyFor: process.env.CONTRACT_NAME })
+
+// Abstract the logic of interacting with the contract to simplify your project
+const contract = new HelloNEAR({ contractId: process.env.CONTRACT_NAME, walletToUse: wallet });
 
 // Setup on page load
 window.onload = async () => {
-  const isSignedIn = await wallet.startUp()
+  let isSignedIn = await wallet.startUp();
 
-  if(isSignedIn){
-    signedInFlow()
-  }else{
-    signedOutFlow()
+  if (isSignedIn) {
+    signedInFlow();
+  } else {
+    signedOutFlow();
   }
 
   fetchGreeting();
-}
+};
 
 // Button clicks
 document.querySelector('form').onsubmit = doUserAction;
-document.querySelector('#sign-in-button').onclick = () => { wallet.signIn() }
-document.querySelector('#sign-out-button').onclick = () => { wallet.signOut() } 
+document.querySelector('#sign-in-button').onclick = () => { wallet.signIn(); };
+document.querySelector('#sign-out-button').onclick = () => { wallet.signOut(); };
 
 // Take the new greeting and send it to the contract
 async function doUserAction(event) {
@@ -30,14 +33,14 @@ async function doUserAction(event) {
   const { greeting } = event.target.elements;
 
   document.querySelector('#signed-in-flow main')
-          .classList.add('please-wait');
+    .classList.add('please-wait');
 
   await contract.setGreeting(greeting.value);
 
   // ===== Fetch the data from the blockchain =====
   await fetchGreeting();
   document.querySelector('#signed-in-flow main')
-          .classList.remove('please-wait');
+    .classList.remove('please-wait');
 }
 
 // Get greeting from the contract on chain
