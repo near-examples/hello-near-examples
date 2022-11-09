@@ -1,13 +1,11 @@
 import 'regenerator-runtime/runtime';
 import { Wallet } from './near-wallet';
-import { HelloNEAR } from './near-interface';
+
+const CONTRACT_ADDRESS = process.env.CONTRACT_NAME;
 
 // When creating the wallet you can optionally ask to create an access key
 // Having the key enables to call non-payable methods without interrupting the user to sign
-const wallet = new Wallet({ createAccessKeyFor: process.env.CONTRACT_NAME })
-
-// Abstract the logic of interacting with the contract to simplify your flow
-const helloNEAR = new HelloNEAR({ contractId: process.env.CONTRACT_NAME, walletToUse: wallet });
+const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS })
 
 // Setup on page load
 window.onload = async () => {
@@ -35,7 +33,7 @@ async function doUserAction(event) {
   document.querySelector('#signed-in-flow main')
     .classList.add('please-wait');
 
-  await helloNEAR.setGreeting(greeting.value);
+  await wallet.callMethod({ method: 'set_greeting', args: { greeting: greeting.value }, contractId: CONTRACT_ADDRESS });
 
   // ===== Fetch the data from the blockchain =====
   await fetchGreeting();
@@ -45,7 +43,7 @@ async function doUserAction(event) {
 
 // Get greeting from the contract on chain
 async function fetchGreeting() {
-  const currentGreeting = await helloNEAR.getGreeting();
+  const currentGreeting = await wallet.viewMethod({ method: 'get_greeting', contractId: CONTRACT_ADDRESS });
 
   document.querySelectorAll('[data-behavior=greeting]').forEach(el => {
     el.innerText = currentGreeting;
