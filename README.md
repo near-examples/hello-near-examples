@@ -3,7 +3,7 @@
 [![](https://img.shields.io/badge/Gitpod-Ready-orange)](https://gitpod.io/#/https://github.com/near-examples/hello-near-rust)
 [![](https://img.shields.io/badge/Contract-rust-red)](https://docs.near.org/develop/contracts/anatomy)
 [![](https://img.shields.io/badge/Frontend-JS-yellow)](https://docs.near.org/develop/integrate/frontend)
-[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fnear-examples%2Fhello-near-rust%2Fbadge&style=flat&label=Tests)](https://actions-badge.atrox.dev/near-examples/hello-near-rust/goto)
+[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fnear-examples%2Fhello-near-rust%2Fbadge%3Fref%3Dmain&style=flat&label=Tests)](https://actions-badge.atrox.dev/near-examples/hello-near-rust/goto?ref=main)
 
 
 Hello NEAR! is a friendly decentralized App that stores a greeting message. It is one of the simplest smart contracts you can create in NEAR, and the perfect gateway to introduce yourself in the world of smart contracts.
