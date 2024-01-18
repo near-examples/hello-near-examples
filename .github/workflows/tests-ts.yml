@@ -15,4 +15,4 @@ jobs:
         run: |
           cd ./contract-ts
           yarn
-          yarn:test
+          yarn test
