@@ -34,6 +34,7 @@ class HelloNear {
 You can automatically compile and deploy the contract in the NEAR testnet by running:
 
 ```bash
+npm run build
 npm run deploy
 ```
 
