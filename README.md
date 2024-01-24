@@ -1,8 +1,9 @@
 # Hello World Examples
 
-This repository contains examples of a simple Hello World smart contract in both JavaScript and Rust.
+This repository contains examples of a simple Hello World smart contract in both JavaScript and Rust, and an examples of a frontend interacting with a Hello World smart contract. 
 
 ## Repositories
 
-- [Hello World JavaScript](hello-near-js)
-- [Hello World Rust](hello-near-rust)
+- [Hello World JavaScript](contract-ts)
+- [Hello World Rust](contract-ts)
+- [Hello World Frontend](frontend)
