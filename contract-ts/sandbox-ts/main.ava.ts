@@ -12,7 +12,6 @@ test.before(async (t) => {
   // Init the worker and start a Sandbox server
   worker = await Worker.init();
 
-  t.assert(false);
   // Deploy contract
   const root = worker.rootAccount;
   const contract = await root.createSubAccount('test-account');
