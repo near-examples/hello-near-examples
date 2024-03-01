@@ -1,6 +1,6 @@
 # Hello World Examples
 
-This repository contains examples of a simple Hello World smart contract in both JavaScript and Rust, and an examples of a frontend interacting with a Hello World smart contract. 
+This repository contains examples of a simple Hello World smart contract in both JavaScript and Rust, as well as a frontend interacting with a Hello World smart contract. 
 
 ## Repositories
 
