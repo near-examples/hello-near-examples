@@ -3,6 +3,8 @@
 [![](https://img.shields.io/badge/Contract-JS-yellow)](contract-ts)
 [![](https://img.shields.io/badge/Contract-Rust-red)](contract-ts)
 [![](https://img.shields.io/badge/Frontend-JS-yellow)](frontend)
+![example workflow](https://github.com/near-examples/hello-near-examples/actions/workflows/tests-ts.yml/badge.svg)
+![example workflow](https://github.com/near-examples/hello-near-examples/actions/workflows/tests-rs.yml/badge.svg)
 
 This repository contains examples of a simple Hello World smart contract in both JavaScript and Rust, as well as a frontend interacting with a Hello World smart contract. 
 
