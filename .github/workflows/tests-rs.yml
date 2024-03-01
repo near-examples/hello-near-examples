@@ -6,11 +6,8 @@ jobs:
       matrix:
         platform: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.platform }}
-    concurrency:
-      group: rs-tests
-      cancel-in-progress: true
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Install and test modules
         run: |
           cd ./contract-rs

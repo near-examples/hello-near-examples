@@ -7,12 +7,9 @@ jobs:
         platform: [ubuntu-latest, macos-latest]
         node-version: [18, 20]
     runs-on: ${{ matrix.platform }}
-    concurrency:
-      group: ts-tests
-      cancel-in-progress: true
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install and test modules
