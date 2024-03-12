@@ -18,13 +18,15 @@ cargo test
 
 ## How to Deploy?
 
-Deployment is automated with GitHub Actions CI/CD pipeline.
 To deploy manually, install [`cargo-near`](https://github.com/near/cargo-near) and run:
 
 ```bash
+# Create a new account
+cargo near create-dev-account
+
+# Deploy the contract on it
 cargo near deploy <account-id>
 ```
-
 ## Useful Links
 
 - [cargo-near](https://github.com/near/cargo-near) - NEAR smart contract development toolkit for Rust
