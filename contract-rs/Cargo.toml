@@ -1,6 +1,6 @@
 [package]
 name = "contract-rs"
-description = "cargo-near-new-project-description"
+description = "Hello Near Example"
 version = "0.1.0"
 edition = "2021"
 # TODO: Fill out the repository field to help NEAR ecosystem tools to discover your project.
@@ -13,7 +13,7 @@ crate-type = ["cdylib", "rlib"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [dependencies]
-near-sdk = "5.0.0"
+near-sdk = "5.1.0"
 
 [dev-dependencies]
 near-sdk = { version = "5.0.0", features = ["unit-testing"] }
