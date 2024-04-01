@@ -39,6 +39,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.2",
     "semantic-ui-react": "^2.1.5",
-    "stream": "^0.0.2"
+    "stream": "^0.0.2",
+    "vm-browserify": "^1.1.2"
   }
 }
