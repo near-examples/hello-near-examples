@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
-        uses: ./.github/workflows/setup-node
+        uses: ./.github/workflows/setup-node.yml
 
       - name: Setup Pages ⚙️
         uses: actions/configure-pages@v4
