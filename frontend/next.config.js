@@ -3,7 +3,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: "/hello-near-examples/frontend",
+  basePath: "/hello-near-examples",
   output: "export",
   reactStrictMode: true,
 }
