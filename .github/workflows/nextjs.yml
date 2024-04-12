@@ -4,6 +4,9 @@
 #
 name: Deploy Next.js site to Pages
 
+env:
+  NODE_ENV: 'production'
+
 on:
   # Runs on pushes targeting the default branch
   push:
@@ -35,14 +38,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-        with:
-          # Automatically inject basePath in your Next.js configuration file and disable
-          # server side image optimization (https://nextjs.org/docs/api-reference/next/image#unoptimized).
-          #
-          # You may remove this line if you want to manage the configuration yourself.
-          static_site_generator: next
       - name: Install and test modules
         run: |
           cd ./frontend
@@ -51,7 +46,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./frontend/.next
+          path: ./frontend/build
 
   # Deployment job
   deploy:
