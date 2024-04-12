@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
 
   useEffect(() => {
     // create wallet instance
-    const wallet = new Wallet({ createAccessKeyFor: HelloNearContract[NetworkId], networkId: NetworkId })
+    const wallet = new Wallet({ createAccessKeyFor: HelloNearContract, networkId: NetworkId })
     wallet.startUp(setSignedAccountId);
     setWallet(wallet);
   }, [])

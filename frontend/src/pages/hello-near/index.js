@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 
 import { useStore } from "@/layout";
 import styles from "@/styles/app.module.css";
-import { HelloNearContract, NetworkId } from "../../config";
+import { HelloNearContract } from "../../config";
 import { DocsCard, HelloComponentsCard } from "@/components/cards";
 
 // Contract that the app will interact with
-const CONTRACT = HelloNearContract[NetworkId];
+const CONTRACT = HelloNearContract;
 
 export default function HelloNear() {
   const { signedAccountId, wallet } = useStore();
