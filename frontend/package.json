@@ -23,7 +23,7 @@
     "@web3-onboard/walletconnect": "^2.5.4",
     "base64-js": "^1.5.1",
     "ieee754": "^1.2.1",
-    "near-api-js": "^4.0.0",
+    "near-api-js": "^3.0.4",
     "near-social-vm": "github:gagdiez/VM" ,
     "next": "14.2.0",
     "pino-pretty": "^11.0.0",
