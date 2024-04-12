@@ -4,6 +4,9 @@
 #
 name: Deploy Next.js site to Pages
 
+env:
+  NODE_ENV: 'GHPages'
+
 on:
   # Runs on pushes targeting the default branch
   push:
