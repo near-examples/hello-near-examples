@@ -23,13 +23,8 @@ export class Wallet {
    * wallet.startUp((signedAccountId) => console.log(signedAccountId));
    */
   constructor({ networkId = 'testnet', createAccessKeyFor = undefined }) {
-    this.accountId = '';
     this.createAccessKeyFor = createAccessKeyFor;
-
-    this.selector = setupWalletSelector({
-      network: networkId,
-      modules: [setupMyNearWallet(), setupHereWallet()]
-    });
+    this.networkId = networkId;
   }
 
   /**
@@ -38,13 +33,14 @@ export class Wallet {
    * @returns {Promise<string>} - the accountId of the signed-in user 
    */
   startUp = async (accountChangeHook) => {
+    this.selector = setupWalletSelector({
+      network: this.networkId,
+      modules: [setupMyNearWallet(), setupHereWallet()]
+    });
+
     const walletSelector = await this.selector;
     const isSignedIn = walletSelector.isSignedIn();
-
-    if (isSignedIn) {
-      this.accountId = walletSelector.store.getState().accounts[0].accountId;
-      this.selectedWallet = await walletSelector.wallet();
-    }
+    const accountId = isSignedIn ? walletSelector.store.getState().accounts[0].accountId : '';
 
     walletSelector.store.observable
       .pipe(
@@ -56,8 +52,8 @@ export class Wallet {
         accountChangeHook(signedAccount);
       });
 
-    return this.accountId;
-  }
+    return accountId;
+  };
 
   /**
    * Displays a modal to login the user
@@ -65,15 +61,15 @@ export class Wallet {
   signIn = async () => {
     const modal = setupModal(await this.selector, { contractId: this.createAccessKeyFor });
     modal.show();
-  }
+  };
 
   /**
    * Logout the user
    */
   signOut = async () => {
-    await this.selectedWallet.signOut();
-    this.selectedWallet = this.accountId = this.createAccessKeyFor = null;
-  }
+    const selectedWallet = await (await this.selector).wallet();
+    selectedWallet.signOut();
+  };
 
   /**
    * Makes a read-only call to a contract
@@ -95,7 +91,7 @@ export class Wallet {
       finality: 'optimistic',
     });
     return JSON.parse(Buffer.from(res.result).toString());
-  }
+  };
 
 
   /**
@@ -109,8 +105,8 @@ export class Wallet {
    */
   callMethod = async ({ contractId, method, args = {}, gas = THIRTY_TGAS, deposit = NO_DEPOSIT }) => {
     // Sign a transaction with the "FunctionCall" action
-    return await this.selectedWallet.signAndSendTransaction({
-      signerId: this.accountId,
+    const selectedWallet = await (await this.selector).wallet();
+    const outcome = await selectedWallet.signAndSendTransaction({
       receiverId: contractId,
       actions: [
         {
@@ -124,7 +120,9 @@ export class Wallet {
         },
       ],
     });
-  }
+
+    return providers.getTransactionLastResult(outcome);
+  };
 
   /**
    * Makes a call to a contract
@@ -139,5 +137,5 @@ export class Wallet {
     // Retrieve transaction result from the network
     const transaction = await provider.txStatus(txhash, 'unnused');
     return providers.getTransactionLastResult(transaction);
-  }
+  };
 }
