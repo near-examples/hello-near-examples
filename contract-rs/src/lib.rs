@@ -11,7 +11,7 @@ pub struct Contract {
 impl Default for Contract {
     fn default() -> Self {
         Self {
-            greeting: "Hello".to_string(),
+            greeting: "Howdy".to_string(),
         }
     }
 }
