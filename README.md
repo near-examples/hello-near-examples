@@ -23,4 +23,4 @@ This repository contains examples of a simple Hello World smart contract in both
 
 # Learn More
 1. Learn more about the contract through its [README](./contract-ts/README.md).
-2. Check [**our documentation**](https://docs.near.org/develop/welcome).
+2. Check [**our documentation**](https://docs.near.org/build/welcome).
