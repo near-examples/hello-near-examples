@@ -1,25 +1,25 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from 'react';
 
-import { useStore } from "@/layout";
-import styles from "@/styles/app.module.css";
-import { HelloNearContract } from "../../config";
-import { DocsCard, HelloComponentsCard } from "@/components/cards";
+import { NearContext } from '@/context';
+import styles from '@/styles/app.module.css';
+import { HelloNearContract } from '../../config';
+import { Cards } from '@/components/cards';
 
 // Contract that the app will interact with
 const CONTRACT = HelloNearContract;
 
 export default function HelloNear() {
-  const { signedAccountId, wallet } = useStore();
+  const { signedAccountId, wallet } = useContext(NearContext);
 
-  const [greeting, setGreeting] = useState("loading...");
-  const [newGreeting, setNewGreeting] = useState("loading...");
+  const [greeting, setGreeting] = useState('loading...');
+  const [newGreeting, setNewGreeting] = useState('loading...');
   const [loggedIn, setLoggedIn] = useState(false);
   const [showSpinner, setShowSpinner] = useState(false);
 
   useEffect(() => {
     if (!wallet) return;
 
-    wallet.viewMethod({ contractId: CONTRACT, method: "get_greeting" }).then(
+    wallet.viewMethod({ contractId: CONTRACT, method: 'get_greeting' }).then(
       greeting => setGreeting(greeting)
     );
   }, [wallet]);
@@ -30,9 +30,9 @@ export default function HelloNear() {
 
   const saveGreeting = async () => {
     setShowSpinner(true);
-    await wallet.callMethod({ contractId: CONTRACT, method: "set_greeting", args: { greeting: newGreeting } });
-    const greeting = await wallet.viewMethod({ contractId: CONTRACT, method: "get_greeting" })
-    setGreeting(greeting)
+    await wallet.callMethod({ contractId: CONTRACT, method: 'set_greeting', args: { greeting: newGreeting } });
+    const greeting = await wallet.viewMethod({ contractId: CONTRACT, method: 'get_greeting' });
+    setGreeting(greeting);
     setShowSpinner(false);
   };
 
@@ -70,11 +70,7 @@ export default function HelloNear() {
           <p className="m-0"> Please login to change the greeting </p>
         </div>
       </div>
-
-      <div className={styles.grid}>
-        <DocsCard />
-        <HelloComponentsCard />
-      </div>
+      <Cards />
     </main>
   );
 }
