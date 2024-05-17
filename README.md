@@ -14,13 +14,6 @@ This repository contains examples of a simple Hello World smart contract in both
 
 <br />
 
-# What These Examples Show
-
-1. How to store and retrieve information in the NEAR network.
-2. How to integrate a smart contract in a web frontend.
-
-<br />
-
 # Learn More
 1. Learn more about the contract through its [README](./contract-ts/README.md).
 2. Check [**our documentation**](https://docs.near.org/build/welcome).
