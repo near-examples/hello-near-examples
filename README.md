@@ -14,6 +14,13 @@ This repository contains examples of a simple Hello World smart contract in both
 
 <br />
 
+# What These Examples Show
+
+1. How to store a value in a smart contract
+2. How to interact with a smart contract on NEAR
+
+<br />
+
 # Learn More
 1. Learn more about the contract through its [README](./contract-ts/README.md).
 2. Check [**our documentation**](https://docs.near.org/build/welcome).
