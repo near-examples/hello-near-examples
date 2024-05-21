@@ -17,7 +17,7 @@ This repository contains examples of a simple Hello World smart contract in both
 # What These Examples Show
 
 1. How to store a value in a smart contract
-2. How to interact with a smart contract on NEAR
+2. How to interact with a smart contract on NEAR from a frontend
 
 <br />
 
