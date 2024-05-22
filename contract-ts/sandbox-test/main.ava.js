@@ -1,14 +1,15 @@
-import anyTest, { TestFn } from "ava";
-import { Worker, NearAccount } from 'near-workspaces';
+import anyTest from 'ava';
+import { Worker } from 'near-workspaces';
 import { setDefaultResultOrder } from 'dns'; setDefaultResultOrder('ipv4first'); // temp fix for node >v17
 
 /**
- *  @type {TestFn<{ worker: Worker, accounts: Record<string, NearAccount>}>}
+ *  @typedef {import('near-workspaces').NearAccount} NearAccount
+ *  @type {import('ava').TestFn<{worker: Worker, accounts: Record<string, NearAccount>}>}
  */
-const test = anyTest
+const test = anyTest;
 
 test.beforeEach(async t => {
-  // Create sandbox, accounts, deploy contracts, etc.
+  // Create sandbox
   const worker = t.context.worker = await Worker.init();
 
   // Deploy contract
