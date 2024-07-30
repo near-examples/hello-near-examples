@@ -12,3 +12,4 @@
 # Frontend
 **/dist/
 **/.parcel-cache
+**/.next
