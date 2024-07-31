@@ -23,6 +23,9 @@
     "react": "^18",
     "react-dom": "^18"
   },
+  "resolutions": {
+    "near-api-js": "4.0.3"
+  },
   "devDependencies": {
     "eslint": "^8",
     "eslint-config-next": "14.2.3"
