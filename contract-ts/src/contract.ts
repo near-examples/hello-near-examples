@@ -1,7 +1,15 @@
 // Find all our documentation at https://docs.near.org
 import { NearBindgen, near, call, view } from 'near-sdk-js';
+import * as borsh from 'borsh';
 
-@NearBindgen({})
+@NearBindgen({
+  serializer(value) {
+    return borsh.serialize(schema, value);
+  },
+  deserializer(value) {
+    return borsh.deserialize(schema, value);
+  },
+})
 class HelloNear {
   greeting: string = 'Hello';
 
@@ -16,3 +24,7 @@ class HelloNear {
     this.greeting = greeting;
   }
 }
+
+const schema = {
+  struct: { greeting: 'string' },
+};
