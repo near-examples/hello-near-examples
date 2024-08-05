@@ -5,6 +5,10 @@ import { NearBindgen, near, call, view } from 'near-sdk-js';
 class HelloNear {
   greeting: string = 'Hello';
 
+  static schema = { // JS contracts need a schema
+    "greeting": "string"
+  };
+
   @view({}) // This method is read-only and can be called for free
   get_greeting(): string {
     return this.greeting;
