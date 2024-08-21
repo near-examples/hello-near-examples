@@ -6,7 +6,7 @@ import { distinctUntilChanged, map } from 'rxjs';
 import '@near-wallet-selector/modal-ui/styles.css';
 import { setupModal } from '@near-wallet-selector/modal-ui';
 import { setupWalletSelector } from '@near-wallet-selector/core';
-import { setupHereWallet } from '@near-wallet-selector/here-wallet';
+import { setupMeteorWallet } from '@near-wallet-selector/meteor-wallet';
 import { setupMyNearWallet } from '@near-wallet-selector/my-near-wallet';
 
 const THIRTY_TGAS = '30000000000000';
@@ -35,7 +35,7 @@ export class Wallet {
   startUp = async (accountChangeHook) => {
     this.selector = setupWalletSelector({
       network: this.networkId,
-      modules: [setupMyNearWallet(), setupHereWallet()]
+      modules: [setupMyNearWallet(), setupMeteorWallet()]
     });
 
     const walletSelector = await this.selector;
@@ -137,5 +137,52 @@ export class Wallet {
 
     const transaction = await provider.txStatus(txhash, 'unnused');
     return providers.getTransactionLastResult(transaction);
+  };
+
+  /**
+  * Retrieves the balance of an account
+  * @param {string} accountId - the account id
+  * @returns {Promise<number>} - the account balance
+  */ 
+  getBalance = async (accountId) => {
+    const walletSelector = await this.selector;
+    const { network } = walletSelector.options;
+    const provider = new providers.JsonRpcProvider({ url: network.nodeUrl });
+  
+    // Retrieve account state from the network
+    const account = await provider.query({
+      request_type: 'view_account',
+      account_id: accountId,
+      finality: 'final',
+    });
+  
+    // Return amount in NEAR
+    return account.amount ? account.amount / (10**24) : 0;
+  };
+    
+  /**
+  * Send multiple transactions simultaneously
+  * @param {Array<Object>} transactions - the array of transaction objects to be signed and sent
+  * @returns {Promise<Object>} - the resulting transactions
+  * @example
+  * await wallet.signAndSendTransactions({
+      transactions: [
+        {
+          receiverId: "receiver.testnet",
+          actions: [
+            {
+              type: "Transfer",
+              params: {
+                amount: "10000000000000000000000",
+              },
+            },
+          ],
+        }
+      ],
+    });
+  */  
+  signAndSendTransactions = async (transactions) => {
+    const selectedWallet = await (await this.selector).wallet();
+    return selectedWallet.signAndSendTransactions(transactions);
   };
 }

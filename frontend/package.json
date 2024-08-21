@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@near-wallet-selector/core": "^8.9.11",
-    "@near-wallet-selector/here-wallet": "^8.9.11",
+    "@near-wallet-selector/meteor-wallet": "^8.9.11",
     "@near-wallet-selector/modal-ui": "^8.9.11",
     "@near-wallet-selector/my-near-wallet": "^8.9.11",
     "bootstrap": "^5",
