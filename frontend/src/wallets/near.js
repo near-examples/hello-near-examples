@@ -173,7 +173,7 @@ export class Wallet {
             {
               type: "Transfer",
               params: {
-                amount: "10000000000000000000000",
+                deposit: "10000000000000000000000",
               },
             },
           ],
