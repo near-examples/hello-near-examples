@@ -1,5 +1,5 @@
 // near api js
-import { providers } from 'near-api-js';
+import { providers, utils } from 'near-api-js';
 
 // wallet selector
 import { distinctUntilChanged, map } from 'rxjs';
@@ -156,8 +156,11 @@ export class Wallet {
       finality: 'final',
     });
   
+    const amountString = utils.format.formatNearAmount(account.amount);
+    const amount = Number(amountString.replace(/,/g, "").trim());
+
     // Return amount in NEAR
-    return account.amount ? account.amount / (10**24) : 0;
+    return account.amount ? amount : 0;
   };
     
   /**
