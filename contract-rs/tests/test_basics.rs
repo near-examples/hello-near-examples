@@ -1,4 +1,4 @@
-use near_sdk::NearToken;
+use near_workspaces::types::NearToken;
 use serde_json::json;
 
 const FIVE_NEAR: NearToken = NearToken::from_near(5);
