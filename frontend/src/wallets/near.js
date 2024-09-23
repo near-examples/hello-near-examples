@@ -9,6 +9,9 @@ import { setupWalletSelector } from '@near-wallet-selector/core';
 import { setupHereWallet } from '@near-wallet-selector/here-wallet';
 import { setupMyNearWallet } from '@near-wallet-selector/my-near-wallet';
 
+import { wagmiConfig, web3Modal } from '@/wallets/web3modal';
+import { setupEthereumWallets } from "@near-wallet-selector/ethereum-wallets";
+
 const THIRTY_TGAS = '30000000000000';
 const NO_DEPOSIT = '0';
 
@@ -35,7 +38,11 @@ export class Wallet {
   startUp = async (accountChangeHook) => {
     this.selector = setupWalletSelector({
       network: this.networkId,
-      modules: [setupMyNearWallet(), setupHereWallet()]
+      modules: [
+        setupMyNearWallet(),
+        setupHereWallet(),
+        setupEthereumWallets({ wagmiConfig, web3Modal }),
+      ]
     });
 
     const walletSelector = await this.selector;
