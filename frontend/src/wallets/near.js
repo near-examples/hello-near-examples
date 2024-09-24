@@ -20,13 +20,11 @@ export class Wallet {
    * @constructor
    * @param {Object} options - the options for the wallet
    * @param {string} options.networkId - the network id to connect to
-   * @param {string} options.createAccessKeyFor - the contract to create an access key for
    * @example
-   * const wallet = new Wallet({ networkId: 'testnet', createAccessKeyFor: 'contractId' });
+   * const wallet = new Wallet({ networkId: 'testnet' });
    * wallet.startUp((signedAccountId) => console.log(signedAccountId));
    */
-  constructor({ networkId = 'testnet', createAccessKeyFor = undefined }) {
-    this.createAccessKeyFor = createAccessKeyFor;
+  constructor({ networkId = 'testnet'}) {
     this.networkId = networkId;
   }
 
@@ -36,12 +34,13 @@ export class Wallet {
    * @returns {Promise<string>} - the accountId of the signed-in user 
    */
   startUp = async (accountChangeHook) => {
+    const alwaysOnboardDuringSignIn = true;
     this.selector = setupWalletSelector({
       network: this.networkId,
       modules: [
         setupMyNearWallet(),
         setupHereWallet(),
-        setupEthereumWallets({ wagmiConfig, web3Modal }),
+        setupEthereumWallets({ wagmiConfig, web3Modal, alwaysOnboardDuringSignIn }),
       ]
     });
 
@@ -66,7 +65,7 @@ export class Wallet {
    * Displays a modal to login the user
    */
   signIn = async () => {
-    const modal = setupModal(await this.selector, { contractId: this.createAccessKeyFor });
+    const modal = setupModal(await this.selector, { contractId: "" });
     modal.show();
   };
 
