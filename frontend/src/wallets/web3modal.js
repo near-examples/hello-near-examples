@@ -1,5 +1,5 @@
 import { NetworkId, EVMWalletChain } from '@/config';
-import { http, createConfig } from "@wagmi/core";
+import { reconnect, http, createConfig } from "@wagmi/core";
 import { walletConnect, injected } from "@wagmi/connectors";
 import { createWeb3Modal } from "@web3modal/wagmi";
 
@@ -46,6 +46,9 @@ export const wagmiConfig = createConfig({
     injected({ shimDisconnect: true }),
   ],
 });
+
+// Needed to be called to preserve the login state if your will reload the page
+reconnect(wagmiConfig);
 
 export const web3Modal = createWeb3Modal({
   wagmiConfig: wagmiConfig,
