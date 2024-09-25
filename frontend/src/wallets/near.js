@@ -9,6 +9,9 @@ import { setupWalletSelector } from '@near-wallet-selector/core';
 import { setupHereWallet } from '@near-wallet-selector/here-wallet';
 import { setupMyNearWallet } from '@near-wallet-selector/my-near-wallet';
 
+import { wagmiConfig, web3Modal } from '@/wallets/web3modal';
+import { setupEthereumWallets } from "@near-wallet-selector/ethereum-wallets";
+
 const THIRTY_TGAS = '30000000000000';
 const NO_DEPOSIT = '0';
 
@@ -17,9 +20,9 @@ export class Wallet {
    * @constructor
    * @param {Object} options - the options for the wallet
    * @param {string} options.networkId - the network id to connect to
-   * @param {string} options.createAccessKeyFor - the contract to create an access key for
+   * @param {string} options.createAccessKeyFor - (optional) create a function call key for a contract
    * @example
-   * const wallet = new Wallet({ networkId: 'testnet', createAccessKeyFor: 'contractId' });
+   * const wallet = new Wallet({ networkId: 'testnet'});
    * wallet.startUp((signedAccountId) => console.log(signedAccountId));
    */
   constructor({ networkId = 'testnet', createAccessKeyFor = undefined }) {
@@ -33,9 +36,14 @@ export class Wallet {
    * @returns {Promise<string>} - the accountId of the signed-in user 
    */
   startUp = async (accountChangeHook) => {
+    const alwaysOnboardDuringSignIn = true;
     this.selector = setupWalletSelector({
       network: this.networkId,
-      modules: [setupMyNearWallet(), setupHereWallet()]
+      modules: [
+        setupMyNearWallet(),
+        setupHereWallet(),
+        setupEthereumWallets({ wagmiConfig, web3Modal, alwaysOnboardDuringSignIn: true }),
+      ]
     });
 
     const walletSelector = await this.selector;
