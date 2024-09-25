@@ -25,9 +25,8 @@ const near = {
   testnet: NetworkId === "testnet",
 };
 
-// Get projectId from https://cloud.reown.com
-// check https://docs.reown.com/cloud/relay for more details
-const projectId = 'YOUR_PROJECT_ID';
+// Get your projectId at https://cloud.reown.com
+const projectId = '5bb0fe33763b3bea40b8d69e4269b4ae';
 
 export const wagmiConfig = createConfig({
   chains: [near],

@@ -38,7 +38,6 @@ export class Wallet {
    * @returns {Promise<string>} - the accountId of the signed-in user 
    */
   startUp = async (accountChangeHook) => {
-    const alwaysOnboardDuringSignIn = true;
     this.selector = setupWalletSelector({
       network: this.networkId,
       modules: [
