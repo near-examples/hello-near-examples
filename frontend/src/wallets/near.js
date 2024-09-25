@@ -6,9 +6,11 @@ import { distinctUntilChanged, map } from 'rxjs';
 import '@near-wallet-selector/modal-ui/styles.css';
 import { setupModal } from '@near-wallet-selector/modal-ui';
 import { setupWalletSelector } from '@near-wallet-selector/core';
-import { setupHereWallet } from '@near-wallet-selector/here-wallet';
 import { setupMyNearWallet } from '@near-wallet-selector/my-near-wallet';
+import { setupBitteWallet } from '@near-wallet-selector/bitte-wallet';
+import { setupMeteorWallet } from '@near-wallet-selector/meteor-wallet';
 
+// ethereum wallets
 import { wagmiConfig, web3Modal } from '@/wallets/web3modal';
 import { setupEthereumWallets } from "@near-wallet-selector/ethereum-wallets";
 
@@ -41,7 +43,8 @@ export class Wallet {
       network: this.networkId,
       modules: [
         setupMyNearWallet(),
-        setupHereWallet(),
+        setupBitteWallet(),
+        setupMeteorWallet(),
         setupEthereumWallets({ wagmiConfig, web3Modal, alwaysOnboardDuringSignIn: true }),
       ]
     });
