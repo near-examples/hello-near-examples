@@ -20,11 +20,12 @@ export class Wallet {
    * @constructor
    * @param {Object} options - the options for the wallet
    * @param {string} options.networkId - the network id to connect to
+   * @param {string} options.createAccessKeyFor - (optional) create a function call key for a contract
    * @example
-   * const wallet = new Wallet({ networkId: 'testnet', createAccessKeyFor: 'contractId' });
+   * const wallet = new Wallet({ networkId: 'testnet'});
    * wallet.startUp((signedAccountId) => console.log(signedAccountId));
    */
-  constructor({ networkId = 'testnet'}, createAccessKeyFor = undefined }) {
+  constructor({ networkId = 'testnet', createAccessKeyFor = undefined }) {
     this.createAccessKeyFor = createAccessKeyFor;
     this.networkId = networkId;
   }

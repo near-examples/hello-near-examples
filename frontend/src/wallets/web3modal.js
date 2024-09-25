@@ -2,14 +2,15 @@ import { NetworkId, EVMWalletChain } from '@/config';
 import { reconnect, http, createConfig } from "@wagmi/core";
 import { walletConnect, injected } from "@wagmi/connectors";
 import { createWeb3Modal } from "@web3modal/wagmi";
+import NearLogo from '/public/near.svg';
 
 // see more here: https://docs.reown.com/appkit/react/core/installation#cloud-configuration
 const reownProjectId = '5bb0fe33763b3bea40b8d69e4269b4ae';
 
-const onMainnet = NetworkId == "mainnet";
+const isTestnet = NetworkId === "testnet";
 const nearChain = {
   id: EVMWalletChain.chainId,
-  name: `NEAR Protocol${ onMainnet ? "" : " Testnet"}`,
+  name: isTestnet? "Near Testnet" : "Near Mainnet",
   nativeCurrency: {
     decimals: 18,
     name: "NEAR",
@@ -25,7 +26,7 @@ const nearChain = {
       url: EVMWalletChain.walletExplorerUrl,
     },
   },
-  testnet: !onMainnet,
+  testnet: isTestnet,
 };
 
 const url = "http://localhost:3000";
@@ -33,7 +34,7 @@ const metadata = {
   name: "Onboard to NEAR Protocol",
   description: "Discover NEAR Protocol with Ethereum and NEAR wallets.",
   url: url,
-  icons: [`${url}/near.svg`],
+  icons: [NearLogo],
 };
 
 export const wagmiConfig = createConfig({
