@@ -21,10 +21,11 @@ export class Wallet {
    * @param {Object} options - the options for the wallet
    * @param {string} options.networkId - the network id to connect to
    * @example
-   * const wallet = new Wallet({ networkId: 'testnet' });
+   * const wallet = new Wallet({ networkId: 'testnet', createAccessKeyFor: 'contractId' });
    * wallet.startUp((signedAccountId) => console.log(signedAccountId));
    */
-  constructor({ networkId = 'testnet'}) {
+  constructor({ networkId = 'testnet'}, createAccessKeyFor = undefined }) {
+    this.createAccessKeyFor = createAccessKeyFor;
     this.networkId = networkId;
   }
 
@@ -40,7 +41,7 @@ export class Wallet {
       modules: [
         setupMyNearWallet(),
         setupHereWallet(),
-        setupEthereumWallets({ wagmiConfig, web3Modal, alwaysOnboardDuringSignIn }),
+        setupEthereumWallets({ wagmiConfig, web3Modal, alwaysOnboardDuringSignIn: true }),
       ]
     });
 
@@ -65,7 +66,7 @@ export class Wallet {
    * Displays a modal to login the user
    */
   signIn = async () => {
-    const modal = setupModal(await this.selector, { contractId: "" });
+    const modal = setupModal(await this.selector, { contractId: this.createAccessKeyFor });
     modal.show();
   };
 
