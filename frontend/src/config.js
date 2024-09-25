@@ -3,23 +3,20 @@ const contractPerNetwork = {
   testnet: 'hello.near-examples.testnet',
 };
 
+// Chains for EVM Wallets 
 const evmWalletChains = {
-  testnet: {
-    nearEnv: "testnet",
-    chainId: 398,
-    walletExplorerUrl: "https://eth-explorer-testnet.near.org",
-    explorerUrl: "https://testnet.nearblocks.io",
-    ethRpcForNear: "https://eth-rpc.testnet.near.org",
-    nearNativeRpc: "https://rpc.testnet.near.org"
-  },
   mainnet: {
     chainId: 397,
-    nearEnv: "mainnet",
-    walletExplorerUrl: "https://eth-explorer.near.org",
-    explorerUrl: "https://nearblocks.io",
-    ethRpcForNear: "https://eth-rpc.mainnet.near.org",
-    nearNativeRpc: "https://rpc.mainnet.near.org"
-  }
+    name: "Near Mainnet",
+    explorer: "https://eth-explorer.near.org",
+    rpc: "https://eth-rpc.mainnet.near.org",
+  },
+  testnet: {
+    chainId: 398,
+    name: "Near Testnet",
+    explorer: "https://eth-explorer-testnet.near.org",
+    rpc: "https://eth-rpc.testnet.near.org",
+  },
 }
 
 export const NetworkId = 'testnet';
