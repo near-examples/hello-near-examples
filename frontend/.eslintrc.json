@@ -1,10 +1,3 @@
 {
-  "extends": [
-    "next/core-web-vitals" // extended set of recommended rules from Next.js
-  ],
-  "plugins": ["simple-import-sort"],
-  "root": true,
-  "rules": {
-    "simple-import-sort/imports": "warn"
-  }
+  "extends": "next/core-web-vitals"
 }

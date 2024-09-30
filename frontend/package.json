@@ -37,12 +37,10 @@
     }
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.25.4",
-    "@babel/preset-react": "^7.24.7",
+    "@types/node": "^22.7.4",
     "encoding": "^0.1.13",
     "eslint": "^8.57.1",
     "eslint-config-next": "14.2.13",
-    "eslint-plugin-simple-import-sort": "^12.1.1",
     "pino-pretty": "^11.2.2"
   }
 }
