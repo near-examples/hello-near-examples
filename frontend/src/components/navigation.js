@@ -1,13 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState, useContext } from 'react';
+import { useContext,useEffect, useState } from 'react';
 
-import { NearContext } from '@/context';
 import NearLogo from '/public/near-logo.svg';
+import { NearContext } from '@/wallets/near';
 
 export const Navigation = () => {
   const { signedAccountId, wallet } = useContext(NearContext);
-  const [action, setAction] = useState(() => { });
+  const [action, setAction] = useState(() => {});
   const [label, setLabel] = useState('Loading...');
 
   useEffect(() => {
@@ -28,8 +28,10 @@ export const Navigation = () => {
         <Link href="/" passHref legacyBehavior>
           <Image priority src={NearLogo} alt="NEAR" width="30" height="24" className="d-inline-block align-text-top" />
         </Link>
-        <div className='navbar-nav pt-1'>
-          <button className="btn btn-secondary" onClick={action} > {label} </button>
+        <div className="navbar-nav pt-1">
+          <button className="btn btn-secondary" onClick={action}>
+            {label}
+          </button>
         </div>
       </div>
     </nav>
