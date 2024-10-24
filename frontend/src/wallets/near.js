@@ -4,7 +4,6 @@ import '@near-wallet-selector/modal-ui/styles.css';
 import { setupBitteWallet } from '@near-wallet-selector/bitte-wallet';
 import { setupWalletSelector } from '@near-wallet-selector/core';
 import { setupEthereumWallets } from '@near-wallet-selector/ethereum-wallets';
-import { setupHereWallet } from '@near-wallet-selector/here-wallet';
 import { setupLedger } from '@near-wallet-selector/ledger';
 import { setupMeteorWallet } from '@near-wallet-selector/meteor-wallet';
 import { setupModal } from '@near-wallet-selector/modal-ui';
@@ -45,7 +44,6 @@ export class Wallet {
       network: this.networkId,
       modules: [
         setupMyNearWallet(),
-        setupHereWallet(),
         setupLedger(),
         setupMeteorWallet(),
         setupSender(),
@@ -167,8 +165,13 @@ export class Wallet {
       account_id: accountId,
       finality: 'final',
     });
-    // return amount on NEAR
-    return account.amount ? Number(utils.format.formatNearAmount(account.amount)) : 0;
+
+    // Format the amout and remove commas
+    const amountString = utils.format.formatNearAmount(account.amount);
+    const amount = Number(amountString.replace(/,/g, "").trim());
+
+    // Return amount in NEAR
+    return account.amount ? amount : 0;
   };
 
   /**
