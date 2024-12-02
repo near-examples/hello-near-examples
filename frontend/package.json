@@ -12,23 +12,26 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@near-js/providers": "^1.0.0",
-    "@near-wallet-selector/bitte-wallet": "^8.9.13",
-    "@near-wallet-selector/core": "^8.9.13",
-    "@near-wallet-selector/ethereum-wallets": "^8.9.13",
-    "@near-wallet-selector/ledger": "^8.9.13",
-    "@near-wallet-selector/meteor-wallet": "^8.9.13",
-    "@near-wallet-selector/modal-ui": "^8.9.13",
-    "@near-wallet-selector/my-near-wallet": "^8.9.13",
-    "@near-wallet-selector/sender": "^8.9.13",
-    "@web3modal/wagmi": "^5.1.10",
+    "@near-js/providers": "^1.0.1",
+    "@near-wallet-selector/bitte-wallet": "^8.9.14",
+    "@near-wallet-selector/core": "^8.9.14",
+    "@near-wallet-selector/ethereum-wallets": "^8.9.14",
+    "@near-wallet-selector/here-wallet": "^8.9.14",
+    "@near-wallet-selector/ledger": "^8.9.14",
+    "@near-wallet-selector/meteor-wallet": "^8.9.14",
+    "@near-wallet-selector/modal-ui": "^8.9.14",
+    "@near-wallet-selector/my-near-wallet": "^8.9.14",
+    "@near-wallet-selector/near-mobile-wallet": "^8.9.14",
+    "@near-wallet-selector/sender": "^8.9.14",
+    "@near-wallet-selector/welldone-wallet": "^8.9.14",
+    "@web3modal/wagmi": "^5.1.11",
     "bootstrap": "^5",
     "bootstrap-icons": "^1.11.3",
-    "near-api-js": "^4.0.3",
-    "next": "14.2.13",
+    "near-api-js": "^5.0.1",
+    "next": "15.0.3",
     "react": "^18",
     "react-dom": "^18",
-    "wagmi": "^2.12.16"
+    "wagmi": "^2.13.3"
   },
   "overrides": {
     "@near-wallet-selector/ethereum-wallets": {
@@ -36,10 +39,10 @@
     }
   },
   "devDependencies": {
-    "@types/node": "^22.7.4",
+    "@types/node": "^22.10.1",
     "encoding": "^0.1.13",
-    "eslint": "^8.57.1",
-    "eslint-config-next": "14.2.13",
-    "pino-pretty": "^11.2.2"
+    "eslint": "^9.16.0",
+    "eslint-config-next": "15.0.3",
+    "pino-pretty": "^13.0.0"
   }
 }
