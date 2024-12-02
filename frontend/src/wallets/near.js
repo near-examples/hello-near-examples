@@ -9,6 +9,11 @@ import { setupMeteorWallet } from '@near-wallet-selector/meteor-wallet';
 import { setupModal } from '@near-wallet-selector/modal-ui';
 import { setupMyNearWallet } from '@near-wallet-selector/my-near-wallet';
 import { setupSender } from '@near-wallet-selector/sender';
+import { setupHereWallet } from '@near-wallet-selector/here-wallet';
+import { setupNearMobileWallet } from '@near-wallet-selector/near-mobile-wallet';
+import { setupWelldoneWallet } from '@near-wallet-selector/welldone-wallet';
+
+
 // near api js
 import { providers, utils } from 'near-api-js';
 import { createContext } from 'react';
@@ -43,12 +48,15 @@ export class Wallet {
     this.selector = setupWalletSelector({
       network: this.networkId,
       modules: [
-        setupMyNearWallet(),
-        setupLedger(),
         setupMeteorWallet(),
-        setupSender(),
-        setupBitteWallet(),
         setupEthereumWallets({ wagmiConfig, web3Modal, alwaysOnboardDuringSignIn: true }),
+        setupLedger(),
+        setupBitteWallet(),
+        setupHereWallet(),
+        setupSender(),
+        setupNearMobileWallet(),
+        setupWelldoneWallet(),
+        setupMyNearWallet(),
       ],
     });
 
@@ -151,10 +159,11 @@ export class Wallet {
   /**
    * Gets the balance of an account
    * @param {string} accountId - the account id to get the balance of
+   * @param {boolean} format - whether to format the balance
    * @returns {Promise<number>} - the balance of the account
    *
    */
-  getBalance = async (accountId) => {
+  getBalance = async (accountId, format = false) => {
     const walletSelector = await this.selector;
     const { network } = walletSelector.options;
     const provider = new providers.JsonRpcProvider({ url: network.nodeUrl });
@@ -166,12 +175,12 @@ export class Wallet {
       finality: 'final',
     });
 
-    // Format the amout and remove commas
-    const amountString = utils.format.formatNearAmount(account.amount);
-    const amount = Number(amountString.replace(/,/g, "").trim());
-
-    // Return amount in NEAR
-    return account.amount ? amount : 0;
+    // Format the amount if needed
+    if (format) {
+      return account.amount ? utils.format.formatNearAmount(account.amount) : '0';
+    } else {
+      return account.amount || '0';
+    }
   };
 
   /**
