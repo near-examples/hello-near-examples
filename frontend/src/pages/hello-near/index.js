@@ -28,11 +28,15 @@ export default function HelloNear() {
   }, [signedAccountId]);
 
   const saveGreeting = async () => {
+    wallet.callMethod({ contractId: CONTRACT, method: 'set_greeting', args: { greeting: newGreeting } })
+      .then(async () => {
+        const greeting = await wallet.viewMethod({ contractId: CONTRACT, method: 'get_greeting' });
+        setGreeting(greeting);
+      });
+
     setShowSpinner(true);
+    await new Promise(resolve => setTimeout(resolve, 300));
     setGreeting(newGreeting);
-    await wallet.callMethod({ contractId: CONTRACT, method: 'set_greeting', args: { greeting: newGreeting } });
-    const greeting = await wallet.viewMethod({ contractId: CONTRACT, method: 'get_greeting' });
-    setGreeting(greeting);
     setShowSpinner(false);
   };
 
