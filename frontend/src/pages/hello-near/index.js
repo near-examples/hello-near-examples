@@ -28,14 +28,16 @@ export default function HelloNear() {
   }, [signedAccountId]);
 
   const saveGreeting = async () => {
+    // Try to store greeting, revert if it fails
     wallet.callMethod({ contractId: CONTRACT, method: 'set_greeting', args: { greeting: newGreeting } })
       .then(async () => {
         const greeting = await wallet.viewMethod({ contractId: CONTRACT, method: 'get_greeting' });
         setGreeting(greeting);
       });
 
+    // Assume the transaction will be successful and update the UI optimistically
     setShowSpinner(true);
-    await new Promise(resolve => setTimeout(resolve, 300));
+    await new Promise(resolve => setTimeout(resolve, 300));  // 300ms delay to show spinner
     setGreeting(newGreeting);
     setShowSpinner(false);
   };
