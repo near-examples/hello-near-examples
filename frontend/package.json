@@ -18,7 +18,7 @@
     "@near-wallet-selector/ethereum-wallets": "^8.9.14",
     "@near-wallet-selector/here-wallet": "^8.9.14",
     "@near-wallet-selector/ledger": "^8.9.14",
-    "@near-wallet-selector/meteor-wallet": "^8.9.14",
+    "@near-wallet-selector/meteor-wallet": "^8.9.15",
     "@near-wallet-selector/modal-ui": "^8.9.14",
     "@near-wallet-selector/my-near-wallet": "^8.9.14",
     "@near-wallet-selector/near-mobile-wallet": "^8.9.14",
