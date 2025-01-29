@@ -1,12 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import NearLogo from '/public/near-logo.svg';
-import { NearContext } from '@/pages/_app';
+import { useWalletSelector } from '@near-wallet-selector/react-hook'
 
 export const Navigation = () => {
-  const { signedAccountId, walletSelector, modal } = useContext(NearContext);
+  const { signedAccountId, walletSelector, modal } = useWalletSelector();
   const [action, setAction] = useState(() => { });
   const [label, setLabel] = useState('Loading...');
 
