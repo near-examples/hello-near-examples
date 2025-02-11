@@ -1,27 +1,44 @@
 import '@/styles/globals.css';
 
-import { useEffect, useState } from 'react';
-
-import { Navigation } from '@/components/navigation';
+import '@near-wallet-selector/modal-ui/styles.css';
+import { setupMyNearWallet } from '@near-wallet-selector/my-near-wallet';
+import { setupMeteorWallet } from '@near-wallet-selector/meteor-wallet';
+import { setupBitteWallet } from '@near-wallet-selector/bitte-wallet';
+import { setupEthereumWallets } from '@near-wallet-selector/ethereum-wallets';
+import { setupLedger } from '@near-wallet-selector/ledger';
+import { setupSender } from '@near-wallet-selector/sender';
+import { setupHereWallet } from '@near-wallet-selector/here-wallet';
+import { setupNearMobileWallet } from '@near-wallet-selector/near-mobile-wallet';
+import { setupWelldoneWallet } from '@near-wallet-selector/welldone-wallet';
+import { WalletSelectorProvider } from '@near-wallet-selector/react-hook';
 import { HelloNearContract, NetworkId } from '@/config';
-import { NearContext, Wallet } from '@/wallets/near';
+import { Navigation } from '@/components/navigation';
 
+// ethereum wallets
+import { wagmiConfig, web3Modal } from '@/wallets/web3modal';
 
-// Wallet instance
-const wallet = new Wallet({ networkId: NetworkId });
+const walletSelectorConfig = {
+  network: NetworkId,
+  // createAccessKeyFor: HelloNearContract,
+  modules: [
+    setupEthereumWallets({ wagmiConfig, web3Modal, alwaysOnboardDuringSignIn: true }),
+    setupBitteWallet(),
+    setupMeteorWallet(),
+    setupLedger(),
+    setupSender(),
+    setupHereWallet(),
+    setupNearMobileWallet(),
+    setupWelldoneWallet(),
+    setupMyNearWallet(),
+  ],
+}
 
-// Optional: Create an access key so the user does not need to sign transactions. Read more about access keys here: https://docs.near.org/concepts/protocol/access-keys
-//const wallet = new Wallet({ networkId: NetworkId, createAccessKeyFor: HelloNearContract });
-
-export default function MyApp({ Component, pageProps }) {
-  const [signedAccountId, setSignedAccountId] = useState('');
-
-  useEffect(() => { wallet.startUp(setSignedAccountId) }, []);
+export default function App({ Component, pageProps }) {
 
   return (
-    <NearContext.Provider value={{ wallet, signedAccountId }}>
+    <WalletSelectorProvider config={walletSelectorConfig}>
       <Navigation />
       <Component {...pageProps} />
-    </NearContext.Provider>
+    </WalletSelectorProvider>
   );
 }

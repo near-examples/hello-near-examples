@@ -1,27 +1,23 @@
-import { useContext, useEffect, useState } from 'react';
-
 import { Cards } from '@/components/cards';
+
+import { useEffect, useState } from 'react';
 import styles from '@/styles/app.module.css';
-import { NearContext } from '@/wallets/near';
 
 import { HelloNearContract } from '../../config';
 
-// Contract that the app will interact with
-const CONTRACT = HelloNearContract;
+import { useWalletSelector } from '@near-wallet-selector/react-hook';
 
 export default function HelloNear() {
-  const { signedAccountId, wallet } = useContext(NearContext);
+  const { signedAccountId, viewFunction, callFunction } = useWalletSelector();
 
   const [greeting, setGreeting] = useState('loading...');
-  const [newGreeting, setNewGreeting] = useState('loading...');
+  const [newGreeting, setNewGreeting] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
   const [showSpinner, setShowSpinner] = useState(false);
 
   useEffect(() => {
-    if (!wallet) return;
-
-    wallet.viewMethod({ contractId: CONTRACT, method: 'get_greeting' }).then((greeting) => setGreeting(greeting));
-  }, [wallet]);
+    viewFunction({ contractId: HelloNearContract, method: 'get_greeting' }).then((greeting) => setGreeting(greeting));
+  }, []);
 
   useEffect(() => {
     setLoggedIn(!!signedAccountId);
@@ -29,9 +25,9 @@ export default function HelloNear() {
 
   const saveGreeting = async () => {
     // Try to store greeting, revert if it fails
-    wallet.callMethod({ contractId: CONTRACT, method: 'set_greeting', args: { greeting: newGreeting } })
+    callFunction({ contractId: HelloNearContract, method: 'set_greeting', args: { greeting: newGreeting } })
       .then(async () => {
-        const greeting = await wallet.viewMethod({ contractId: CONTRACT, method: 'get_greeting' });
+        const greeting = await viewFunction({ contractId: HelloNearContract, method: 'get_greeting' });
         setGreeting(greeting);
       });
 
@@ -47,7 +43,7 @@ export default function HelloNear() {
       <div className={styles.description}>
         <p>
           Interacting with the contract: &nbsp;
-          <code className={styles.code}>{CONTRACT}</code>
+          <code className={styles.code}>{HelloNearContract}</code>
         </p>
       </div>
 
