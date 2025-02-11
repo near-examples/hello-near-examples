@@ -1,9 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
+
 import { useEffect, useState } from 'react';
+import { useWalletSelector } from '@near-wallet-selector/react-hook';
 
 import NearLogo from '/public/near-logo.svg';
-import { useWalletSelector } from '@near-wallet-selector/react-hook';
 
 export const Navigation = () => {
   const [action, setAction] = useState(() => { });
