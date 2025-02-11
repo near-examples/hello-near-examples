@@ -3,8 +3,10 @@ import '@/styles/globals.css';
 import '@near-wallet-selector/modal-ui/styles.css';
 import { setupMyNearWallet } from '@near-wallet-selector/my-near-wallet';
 import { setupMeteorWallet } from '@near-wallet-selector/meteor-wallet';
+import { setupMeteorWalletApp } from '@near-wallet-selector/meteor-wallet-app';
 import { setupBitteWallet } from '@near-wallet-selector/bitte-wallet';
 import { setupEthereumWallets } from '@near-wallet-selector/ethereum-wallets';
+import { setupHotWallet } from '@near-wallet-selector/hot-wallet';
 import { setupLedger } from '@near-wallet-selector/ledger';
 import { setupSender } from '@near-wallet-selector/sender';
 import { setupHereWallet } from '@near-wallet-selector/here-wallet';
@@ -24,6 +26,8 @@ const walletSelectorConfig = {
     setupEthereumWallets({ wagmiConfig, web3Modal, alwaysOnboardDuringSignIn: true }),
     setupBitteWallet(),
     setupMeteorWallet(),
+    setupMeteorWalletApp({contractId: HelloNearContract}),
+    setupHotWallet(),
     setupLedger(),
     setupSender(),
     setupHereWallet(),
