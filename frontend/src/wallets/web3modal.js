@@ -1,30 +1,23 @@
 import { createAppKit } from "@reown/appkit/react";
-import { reconnect } from "@wagmi/core";
-import { injected, walletConnect } from "@wagmi/connectors";
 import { nearTestnet } from "@reown/appkit/networks";
 import { WagmiAdapter } from "@reown/appkit-adapter-wagmi";
+import { reconnect } from "@wagmi/core";
 
 // Get your projectId at https://cloud.reown.com
 const projectId = '5bb0fe33763b3bea40b8d69e4269b4ae';
-const connectors = [
-  walletConnect({
-    projectId,
-    metadata: {
-      name: "Hello near examples",
-      description: "Examples demonstrating integrations with NEAR blockchain",
-      url: "https://near.github.io/wallet-selector",
-      icons: ["https://near.github.io/wallet-selector/favicon.ico"],
-    },
-    showQrModal: false, // showQrModal must be false
-  }),
-  injected({ shimDisconnect: true }),
-];
+
+const metadata = {
+  name: "Hello near examples",
+  description: "Examples demonstrating integrations with NEAR blockchain",
+  url: "https://near.github.io/wallet-selector",
+  icons: ["https://near.github.io/wallet-selector/favicon.ico"],
+}
 
 export const wagmiAdapter = new WagmiAdapter({
-  projectId,
-  connectors,
   networks: [nearTestnet],
-});
+  projectId,
+  autoReconnect: true,
+})
 
 reconnect(wagmiAdapter.wagmiConfig);
 
@@ -34,12 +27,11 @@ export const web3Modal = createAppKit({
   networks: [nearTestnet],
   defaultNetwork: nearTestnet,
   enableWalletConnect: true,
+  metadata,
   features: {
     analytics: true,
-    swaps: false,
-    onramp: false,
-    email: false, // Smart accounts (Safe contract) not available on NEAR Protocol, only EOA.
-    socials: false, // Smart accounts (Safe contract) not available on NEAR Protocol, only EOA.
+    socials: false,
+    email: false
   },
   coinbasePreference: "eoaOnly", // Smart accounts (Safe contract) not available on NEAR Protocol, only EOA.
 });
