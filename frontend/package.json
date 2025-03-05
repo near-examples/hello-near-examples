@@ -30,19 +30,12 @@
     "@near-wallet-selector/welldone-wallet": "^8.10.0",
     "@reown/appkit": "^1.6.9",
     "@reown/appkit-adapter-wagmi": "^1.6.9",
-    "@web3modal/wagmi": "^5.1.11",
     "bootstrap": "^5",
     "bootstrap-icons": "^1.11.3",
     "near-api-js": "^5.0.1",
-    "next": "15.0.3",
+    "next": "15.2.1",
     "react": "^18",
-    "react-dom": "^18",
-    "wagmi": "^2.13.3"
-  },
-  "overrides": {
-    "@near-wallet-selector/ethereum-wallets": {
-      "near-api-js": "4.0.3"
-    }
+    "react-dom": "^18"
   },
   "devDependencies": {
     "@types/node": "^22.10.1",
