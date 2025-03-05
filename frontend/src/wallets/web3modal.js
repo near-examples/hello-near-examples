@@ -9,7 +9,7 @@ const projectId = '5bb0fe33763b3bea40b8d69e4269b4ae';
 const metadata = {
   name: "Hello near examples",
   description: "Examples demonstrating integrations with NEAR blockchain",
-  url: "https://near.github.io/wallet-selector",
+  url: "https://near.github.io/near-examples",
   icons: ["https://near.github.io/wallet-selector/favicon.ico"],
 }
 
