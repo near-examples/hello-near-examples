@@ -41,7 +41,7 @@ class TestGreetingContract(NearTestCase):
             method_name="set_greeting",
             args={"message": "Hello from test!"}
         )
-        result = json.loads(result)
+        result = json.loads(result.text)
         assert result["success"] == True
         
         # Get greeting
@@ -49,5 +49,5 @@ class TestGreetingContract(NearTestCase):
             account=self.user,
             method_name="get_greeting"
         )
-        assert greeting == "Hello from test!"
+        assert greeting.text == "Hello from test!"
         
