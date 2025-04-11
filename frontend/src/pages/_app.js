@@ -17,13 +17,13 @@ import { HelloNearContract, NetworkId } from '@/config';
 import { Navigation } from '@/components/navigation';
 
 // ethereum wallets
-import { wagmiAdapter, web3Modal } from '@/wallets/web3modal';
+import { wagmiConfig, web3Modal } from '@/wallets/web3modal';
 
 const walletSelectorConfig = {
   network: NetworkId,
   // createAccessKeyFor: HelloNearContract,
   modules: [
-    setupEthereumWallets({ wagmiConfig: wagmiAdapter.wagmiConfig, web3Modal }),
+    setupEthereumWallets({ wagmiConfig, web3Modal }),
     setupBitteWallet(),
     setupMeteorWallet(),
     setupMeteorWalletApp({contractId: HelloNearContract}),
