@@ -9,12 +9,6 @@ const projectId = '5bb0fe33763b3bea40b8d69e4269b4ae';
 const connectors = [
   walletConnect({
     projectId,
-    // metadata: {
-    //   name: "NEAR Guest Book",
-    //   description: "A guest book with comments stored on the NEAR blockchain",
-    //   url: "https://near.github.io/wallet-selector",
-    //   icons: ["https://near.github.io/wallet-selector/favicon.ico"],
-    // },
     showQrModal: false, // showQrModal must be false
   }),
   injected({ shimDisconnect: true }),
