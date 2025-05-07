@@ -28,14 +28,16 @@
     "@near-wallet-selector/react-hook": "9.0.1",
     "@near-wallet-selector/sender": "9.0.1",
     "@near-wallet-selector/welldone-wallet": "9.0.1",
-    "@reown/appkit": "^1.7.3",
-    "@reown/appkit-adapter-wagmi": "^1.7.3",
+    "@reown/appkit": "1.6.9",
+    "@reown/appkit-adapter-wagmi": "1.6.9",
     "bootstrap": "^5",
     "bootstrap-icons": "^1.11.3",
     "near-api-js": "^5.1.1",
-    "next": "15.2.1",
+    "next": "^15",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "viem": "2.21.26",
+    "wagmi": "2.12.17"
   },
   "devDependencies": {
     "@types/node": "^22.10.1",
