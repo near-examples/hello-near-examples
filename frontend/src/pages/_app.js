@@ -21,7 +21,7 @@ import { wagmiAdapter, web3Modal } from '@/wallets/web3modal';
 
 const walletSelectorConfig = {
   network: NetworkId,
-  // createAccessKeyFor: HelloNearContract,
+  createAccessKeyFor: HelloNearContract,
   modules: [
     setupEthereumWallets({ wagmiConfig: wagmiAdapter.wagmiConfig, web3Modal }),
     setupBitteWallet(),

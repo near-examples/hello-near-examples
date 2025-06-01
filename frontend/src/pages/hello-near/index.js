@@ -29,13 +29,12 @@ export default function HelloNear() {
       .then(async () => {
         const greeting = await viewFunction({ contractId: HelloNearContract, method: 'get_greeting' });
         setGreeting(greeting);
+        setShowSpinner(false);
       });
 
     // Assume the transaction will be successful and update the UI optimistically
     setShowSpinner(true);
-    await new Promise(resolve => setTimeout(resolve, 300));  // 300ms delay to show spinner
     setGreeting(newGreeting);
-    setShowSpinner(false);
   };
 
   return (
