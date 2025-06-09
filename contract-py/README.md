@@ -42,7 +42,7 @@ curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releas
 Then run:
 
 ```bash
-uvx nearc greeting_contract.py
+uvx nearc contract.py
 ```
 
 ## How to Test Locally?
