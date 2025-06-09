@@ -9,7 +9,7 @@ class TestGreetingContract(NearTestCase):
         
         # Compile the contract
         wasm_path = cls.compile_contract(
-            "greeting_contract.py",
+            "contract.py",
             single_file=True
         )
         
