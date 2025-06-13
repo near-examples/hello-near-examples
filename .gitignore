@@ -10,6 +10,13 @@
 **/pnpm-lock.yaml
 **/.tsimp
 
+# Python
+**/__pycache__/
+**/.pytest_cache/
+**/.venv/
+**/build/
+**/*.wasm
+
 # Frontend
 **/dist/
 **/.parcel-cache
