@@ -2,15 +2,20 @@
 [![](https://img.shields.io/badge/⋈%20Examples-Basics-green)](https://docs.near.org/tutorials/welcome)
 [![](https://img.shields.io/badge/Contract-JS-yellow)](contract-ts)
 [![](https://img.shields.io/badge/Contract-Rust-red)](contract-rs)
+[![](https://img.shields.io/badge/Contract-Python-green)](contract-py)
 [![](https://img.shields.io/badge/Frontend-Next.js-blue)](frontend)
 ![example workflow](https://github.com/near-examples/hello-near-examples/actions/workflows/tests-ts.yml/badge.svg)
 ![example workflow](https://github.com/near-examples/hello-near-examples/actions/workflows/tests-rs.yml/badge.svg)
 
-This repository contains examples of a simple Hello World smart contract in both JavaScript and Rust, as well as a frontend interacting with a deployed Hello World contract 
+This repository contains examples of a simple Hello World smart contract in both JavaScript, Rust, and Python as well as a frontend interacting with a deployed Hello World contract. 
 
-- [Hello World JavaScript](contract-ts)
-- [Hello World Rust](contract-ts)
-- [Hello World Frontend](frontend)
+Smart Contracts:
+- 🌐 [Hello World JavaScript](contract-ts)
+- 🦀 [Hello World Rust](contract-rs)
+- 🐍 [Hello World Python](contract-py)
+
+Front End:
+- 🖥️ [Hello World Frontend](frontend)
 
 <br />
 
