@@ -10,13 +10,13 @@ import { useWalletSelector } from '@near-wallet-selector/react-hook';
 export default function HelloNear() {
   const { signedAccountId, viewFunction, callFunction } = useWalletSelector();
 
-  const [greeting, setGreeting] = useState('loading...');
+  const [greeting, setGreeting] = useState<string>('loading...');
   const [newGreeting, setNewGreeting] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
   const [showSpinner, setShowSpinner] = useState(false);
 
   useEffect(() => {
-    viewFunction({ contractId: HelloNearContract, method: 'get_greeting' }).then((greeting) => setGreeting(greeting));
+    viewFunction({ contractId: HelloNearContract, method: 'get_greeting' }).then((greeting) => setGreeting(greeting as string));
   }, []);
 
   useEffect(() => {
@@ -27,7 +27,7 @@ export default function HelloNear() {
     // Try to store greeting, revert if it fails
     callFunction({ contractId: HelloNearContract, method: 'set_greeting', args: { greeting: newGreeting } })
       .then(async () => {
-        const greeting = await viewFunction({ contractId: HelloNearContract, method: 'get_greeting' });
+        const greeting = (await viewFunction({ contractId: HelloNearContract, method: 'get_greeting' })) as string;
         setGreeting(greeting);
         setShowSpinner(false);
       });
