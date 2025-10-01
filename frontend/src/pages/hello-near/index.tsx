@@ -10,7 +10,7 @@ import { useWalletSelector } from '@near-wallet-selector/react-hook';
 export default function HelloNear() {
   const { signedAccountId, viewFunction, callFunction } = useWalletSelector();
 
-  const [greeting, setGreeting] = useState<string>('loading...');
+  const [greeting, setGreeting] = useState('loading...');
   const [newGreeting, setNewGreeting] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
   const [showSpinner, setShowSpinner] = useState(false);

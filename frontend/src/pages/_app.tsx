@@ -23,13 +23,13 @@ import { setupWelldoneWallet } from "@near-wallet-selector/welldone-wallet";
 import { wagmiAdapter, web3Modal } from "@/wallets/web3modal";
 
 // Types
-import type { WalletModuleFactory } from "@near-wallet-selector/core";
+import type { WalletModuleFactory, WalletSelectorParams } from "@near-wallet-selector/core";
 
-const walletSelectorConfig = {
+const walletSelectorConfig: WalletSelectorParams = {
   network: NetworkId,
   modules: [
-    setupEthereumWallets({ wagmiConfig: wagmiAdapter.wagmiConfig, web3Modal }),
-    setupBitteWallet(),
+    setupEthereumWallets({ wagmiConfig: wagmiAdapter.wagmiConfig as any, web3Modal }),
+    setupBitteWallet() as WalletModuleFactory,
     setupMeteorWallet(),
     setupMeteorWalletApp({ contractId: HelloNearContract }),
     setupHotWallet(),
@@ -39,7 +39,7 @@ const walletSelectorConfig = {
     setupNearMobileWallet(),
     setupWelldoneWallet(),
     setupMyNearWallet(),
-  ] as WalletModuleFactory[], // ✅ force correct typing
+  ]
 };
 
 export default function App({ Component, pageProps }: AppProps) {
