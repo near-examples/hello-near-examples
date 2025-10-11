@@ -16,7 +16,10 @@ export const Cards = () => {
         <p>Learn how this application works, and what you can build on Near.</p>
       </Link>
 
-      <Link href="/hello-near" className={styles.card} rel="noopener noreferrer">
+      <Link
+        href="/hello-near"
+        className={styles.card}
+      >
         <h2>
           Near Integration <span>-&gt;</span>
         </h2>
