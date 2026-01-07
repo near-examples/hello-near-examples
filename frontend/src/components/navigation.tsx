@@ -9,9 +9,9 @@ export const Navigation = () => {
 
   const handleAction = () => {
     if (signedAccountId) {
-      signOut();
+      void signOut();
     } else {
-      signIn();
+      void signIn();
     }
   };
 
