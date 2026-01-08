@@ -1,0 +1,19 @@
+name: Tests Contract PY
+on: push
+jobs:
+  workflows:
+    strategy:
+      matrix:
+        platform: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install uv
+        run: curl -LsSf https://astral.sh/uv/install.sh | sh
+      - name: Build and test contract
+        run: |
+          cd ./contract-py
+          uv venv
+          uv sync
+          uvx nearc contract.py
+          uv run pytest
