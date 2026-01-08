@@ -17,13 +17,13 @@ export default function HelloNear() {
 
   useEffect(() => {
     viewFunction({ contractId: HelloNearContract, method: 'get_greeting' }).then((greeting) => setGreeting(greeting as string));
-  }, []);
+  }, [viewFunction]);
 
   useEffect(() => {
     setLoggedIn(!!signedAccountId);
   }, [signedAccountId]);
 
-  const saveGreeting = async () => {
+  const saveGreeting = () => {
     // Try to store greeting, revert if it fails
     callFunction({ contractId: HelloNearContract, method: 'set_greeting', args: { greeting: newGreeting } })
       .then(async () => {
