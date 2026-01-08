@@ -8,7 +8,9 @@ jobs:
     runs-on: ${{ matrix.platform }}
     steps:
       - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@stable
+      - uses: dtolnay/rust-toolchain@1.86.0
+        with:
+          targets: wasm32-unknown-unknown
       - name: Install and test modules
         run: |
           cd ./contract-rs
