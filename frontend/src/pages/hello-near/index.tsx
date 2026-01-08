@@ -16,7 +16,7 @@ export default function HelloNear() {
   const [showSpinner, setShowSpinner] = useState(false);
 
   useEffect(() => {
-    void viewFunction({ contractId: HelloNearContract, method: 'get_greeting' }).then((greeting) => setGreeting(greeting as string));
+    viewFunction({ contractId: HelloNearContract, method: 'get_greeting' }).then((greeting) => setGreeting(greeting as string));
   }, [viewFunction]);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export default function HelloNear() {
 
   const saveGreeting = () => {
     // Try to store greeting, revert if it fails
-    void callFunction({ contractId: HelloNearContract, method: 'set_greeting', args: { greeting: newGreeting } })
+    callFunction({ contractId: HelloNearContract, method: 'set_greeting', args: { greeting: newGreeting } })
       .then(async () => {
         const greeting = (await viewFunction({ contractId: HelloNearContract, method: 'get_greeting' })) as string;
         setGreeting(greeting);
