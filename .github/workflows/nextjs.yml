@@ -4,9 +4,6 @@
 #
 name: Deploy Next.js site to Pages
 
-env:
-  NODE_ENV: 'production'
-
 on:
   # Runs on pushes targeting the default branch
   push:
