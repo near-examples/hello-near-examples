@@ -11,6 +11,8 @@ jobs:
       - uses: dtolnay/rust-toolchain@1.86.0
         with:
           targets: wasm32-unknown-unknown
+      - name: Install cargo-near
+        run: cargo install cargo-near
       - name: Install and test modules
         run: |
           cd ./contract-rs
