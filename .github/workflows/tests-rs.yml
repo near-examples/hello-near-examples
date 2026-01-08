@@ -8,9 +8,6 @@ jobs:
     runs-on: ${{ matrix.platform }}
     steps:
       - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@1.86.0
-        with:
-          targets: wasm32-unknown-unknown
       - name: Install cargo-near
         run: cargo install cargo-near
       - name: Install and test modules
