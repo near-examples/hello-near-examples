@@ -13,5 +13,7 @@ jobs:
       - name: Build and test contract
         run: |
           cd ./contract-py
+          uv venv
+          uv sync
           uvx nearc contract.py
           uv run pytest
