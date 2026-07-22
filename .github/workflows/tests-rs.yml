@@ -1,5 +1,12 @@
 name: Tests Contract RS
-on: push
+on:
+  push:
+    paths: ["contract-rs/**"]
+  pull_request:
+    paths: ["contract-rs/**"]
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   workflows:
     strategy:
@@ -8,9 +15,19 @@ jobs:
     runs-on: ${{ matrix.platform }}
     steps:
       - uses: actions/checkout@v4
+
+      - name: Install system dependencies
+        if: matrix.platform == 'ubuntu-latest'
+        run: sudo apt-get update && sudo apt-get install -y libudev-dev
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: contract-rs
+
       - name: Install cargo-near
         run: curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/cargo-near/releases/latest/download/cargo-near-installer.sh | sh
-      - name: Install and test modules
+
+      - name: Test contract
         run: |
           cd ./contract-rs
           cargo test

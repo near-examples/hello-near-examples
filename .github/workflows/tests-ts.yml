@@ -1,19 +1,28 @@
 name: Tests Contract TS
-on: push
+on:
+  push:
+    paths: ["contract-ts/**"]
+  pull_request:
+    paths: ["contract-ts/**"]
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   workflows:
     strategy:
       matrix:
         platform: [ubuntu-latest, macos-latest]
-        node-version: [20,22]
     runs-on: ${{ matrix.platform }}
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
       - uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: "24"
       - name: Install and test modules
         run: |
           cd ./contract-ts
-          yarn
-          yarn test
+          pnpm install
+          pnpm test
