@@ -20,4 +20,4 @@
 # Frontend
 **/dist/
 **/.parcel-cache
-**/.next
+**/.next.pnpm-store/
