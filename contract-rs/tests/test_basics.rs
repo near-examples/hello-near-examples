@@ -1,7 +1,5 @@
-use near_api::{AccountId, NearGas, NearToken};
+use near_api::{AccountId, NearToken};
 use near_sdk::serde_json::json;
-
-const FIVE_NEAR: NearToken = NearToken::from_near(5);
 
 #[tokio::test]
 async fn test_contract_is_operational() -> testresult::TestResult<()> {

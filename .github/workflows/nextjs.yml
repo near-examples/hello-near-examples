@@ -8,6 +8,7 @@ on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
+    paths: ["frontend/**"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -31,15 +32,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "24"
-      - name: Install and test modules
+      - name: Install and build
         run: |
           cd ./frontend
-          yarn
-          yarn next build
+          pnpm install
+          pnpm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

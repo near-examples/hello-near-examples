@@ -1,5 +1,12 @@
 name: Tests Contract PY
-on: push
+on:
+  push:
+    paths: ["contract-py/**"]
+  pull_request:
+    paths: ["contract-py/**"]
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   workflows:
     strategy:
