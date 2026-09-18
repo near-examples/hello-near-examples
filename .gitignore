@@ -21,3 +21,6 @@
 **/dist/
 **/.parcel-cache
 **/.next.pnpm-store/
+**/.next/
+**/.yalc/
+**/tsconfig.tsbuildinfo

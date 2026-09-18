@@ -2,16 +2,11 @@ import "@/styles/globals.css";
 
 import type { AppProps } from "next/app";
 import { Navigation } from "@/components/navigation";
-import { NearProvider } from "near-connect-hooks";
-import { NetworkId } from "@/config";
+import { NearProvider } from "@/components/near-provider";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <NearProvider
-      config={{
-        network: NetworkId
-      }}
-    >
+    <NearProvider>
       <Navigation />
       <Component {...pageProps} />
     </NearProvider>

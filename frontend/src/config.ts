@@ -11,5 +11,5 @@ const contractPerNetwork: ContractPerNetwork = {
 };
 
 // Selected network
-export const NetworkId: 'mainnet' | 'testnet' = 'testnet';
+export const NetworkId: 'mainnet' | 'testnet' = 'mainnet';
 export const HelloNearContract: string = contractPerNetwork[NetworkId];
