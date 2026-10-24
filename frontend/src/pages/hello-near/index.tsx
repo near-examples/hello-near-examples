@@ -5,7 +5,7 @@ import styles from '@/styles/app.module.css';
 
 import { HelloNearContract } from '../../config';
 
-import { useNearWallet } from '@/components/near-provider';
+import { useNearWallet } from '@/providers/near-provider';
 
 export default function HelloNear() {
   const { signedAccountId, viewFunction, callFunction } = useNearWallet();
