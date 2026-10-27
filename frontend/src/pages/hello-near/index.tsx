@@ -11,16 +11,13 @@ export default function HelloNear() {
   const { signedAccountId, viewFunction, callFunction } = useNearWallet();
   const [greeting, setGreeting] = useState<string>('loading...');
   const [newGreeting, setNewGreeting] = useState('');
-  const [loggedIn, setLoggedIn] = useState(false);
+  const loggedIn = Boolean(signedAccountId);
   const [showSpinner, setShowSpinner] = useState(false);
 
   useEffect(() => {
     viewFunction({ contractId: HelloNearContract, method: 'get_greeting' }).then((greeting) => setGreeting(greeting as string));
   }, [viewFunction]);
 
-  useEffect(() => {
-    setLoggedIn(!!signedAccountId);
-  }, [signedAccountId]);
 
   const saveGreeting = () => {
     // Try to store greeting, revert if it fails

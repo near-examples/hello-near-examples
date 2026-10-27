@@ -21,3 +21,6 @@
 **/.next/
 **/.yalc/
 **/tsconfig.tsbuildinfo
+
+# Keep the frontend install reproducible in CI.
+!frontend/pnpm-lock.yaml
