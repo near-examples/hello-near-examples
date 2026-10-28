@@ -1,5 +1,7 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+Use Node.js 22.22.2 or newer (Node.js 24 is used in CI).
+
 ## Getting Started
 
 First, run the development server:
